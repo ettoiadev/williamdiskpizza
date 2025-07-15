@@ -25,7 +25,11 @@ const Index = () => {
               muito amor em cada fatia. Delivery rápido e sabor inesquecível.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="pizza-gradient text-white hover:opacity-90 text-lg px-8 py-3">
+              <Button 
+                size="lg" 
+                className="pizza-gradient text-white hover:opacity-90 text-lg px-8 py-3"
+                onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}
+              >
                 <Phone className="mr-2 h-5 w-5" />
                 Fazer Pedido Agora
               </Button>
@@ -33,7 +37,7 @@ const Index = () => {
                 size="lg" 
                 variant="outline" 
                 className="border-primary text-primary hover:bg-primary hover:text-white text-lg px-8 py-3"
-                onClick={() => window.open('https://www.ifood.com.br', '_blank')}
+                onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}
               >
                 Ver Menu Completo
               </Button>
@@ -118,9 +122,9 @@ const Index = () => {
           <div className="text-center mt-8">
             <Button 
               className="pizza-gradient text-white hover:opacity-90"
-              onClick={() => window.open('https://www.ifood.com.br', '_blank')}
+              onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}
             >
-              Ver Menu Completo no iFood
+              Ver Menu Completo
             </Button>
           </div>
         </div>

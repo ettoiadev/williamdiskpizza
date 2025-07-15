@@ -48,7 +48,7 @@ const Navbar = () => {
               Quem Somos
             </Link>
             <a
-              href="https://www.ifood.com.br"
+              href="https://cardapiodigital.williamdiskpizza.com.br"
               target="_blank"
               rel="noopener noreferrer"
               className="px-3 py-2 rounded-md text-sm font-medium text-gray-700 hover:text-primary hover:bg-primary/5 transition-colors flex items-center gap-1"
@@ -66,7 +66,10 @@ const Navbar = () => {
             >
               Contato
             </Link>
-            <Button className="pizza-gradient text-white hover:opacity-90">
+            <Button 
+              className="pizza-gradient text-white hover:opacity-90"
+              onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}
+            >
               Fazer Pedido
             </Button>
           </div>
@@ -109,13 +112,13 @@ const Navbar = () => {
                 Quem Somos
               </Link>
               <a
-                href="https://www.ifood.com.br"
+                href="https://cardapiodigital.williamdiskpizza.com.br"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-primary hover:bg-primary/5 transition-colors"
                 onClick={toggleMenu}
               >
-                Menu (iFood)
+                Menu
               </a>
               <Link
                 to="/contato"
@@ -129,7 +132,13 @@ const Navbar = () => {
                 Contato
               </Link>
               <div className="px-3 py-2">
-                <Button className="w-full pizza-gradient text-white hover:opacity-90">
+                <Button 
+                  className="w-full pizza-gradient text-white hover:opacity-90"
+                  onClick={() => {
+                    window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank');
+                    toggleMenu();
+                  }}
+                >
                   Fazer Pedido
                 </Button>
               </div>
