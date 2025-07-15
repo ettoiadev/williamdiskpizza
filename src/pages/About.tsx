@@ -2,8 +2,10 @@ import { Card, CardContent } from '@/components/ui/card';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Pizza, Users, Heart, Award, Clock, Utensils } from 'lucide-react';
+
 const About = () => {
-  return <div className="min-h-screen bg-background">
+  return (
+    <div className="min-h-screen bg-background">
       <Navbar />
       
       {/* Hero Section */}
@@ -27,21 +29,31 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">Nossa História</h2>
-              <div className="space-y-4 text-gray-700">
-                <p>Tudo começou em 1990, na cozinha de nossa própria casa. No início, atendíamos apenas vizinhos, amigos e familiares. Com o tempo, graças à propaganda boca a boca, nossos primeiros clientes começaram a surgir — foram eles que carinhosamente passaram a nos chamar de William Disk Pizza.
-
-Com dedicação e qualidade, fomos conquistando uma clientela fiel, que até hoje nos prestigia e nos motiva a continuar. Em 1992, demos um passo importante ao informatizar nosso sistema de pedidos, trazendo mais agilidade e organização ao atendimento. Porém, com o crescimento constante — já somando 3.500 clientes cadastrados —, nossa residência se tornou pequena para comportar a demanda. Foi então que transferimos nossa operação para a Av. Humberto de Alencar Castelo Branco, ainda no Jardim Flórida, o bairro onde tudo começou.
-
-Quatro anos depois, com mais de 10.500 clientes cadastrados e ouvindo os inúmeros pedidos por um espaço para consumo no local, decidimos criar um ambiente familiar e acolhedor para receber nossos clientes com o carinho de sempre.
-
-Hoje, atendemos exclusivamente por delivery ou retirada no balcão, em nossa nova unidade na Rua Bernardino de Campos, 143 – Centro. Nossa missão continua sendo levar até você a mesma pizza saborosa, quentinha e feita com amor — direto do forno para sua casa.
-
-Para sua comodidade, aceitamos cartões de débito e crédito, com maquininhas que levamos até sua residência. Além disso, oferecemos promoções especiais todos os dias em nosso cardápio.
-
-William & Diva
-Com carinho, para você.</p>
+              <div className="space-y-6 text-gray-700">
+                <p>
+                  Tudo começou em 1990, na cozinha de nossa própria casa. No início, atendíamos apenas vizinhos, amigos e familiares. Com o tempo, graças à propaganda boca a boca, nossos primeiros clientes começaram a surgir — foram eles que carinhosamente passaram a nos chamar de <strong>William Disk Pizza</strong>.
+                </p>
                 
+                <p>
+                  Com dedicação e qualidade, fomos conquistando uma clientela fiel, que até hoje nos prestigia e nos motiva a continuar. Em 1992, demos um passo importante ao informatizar nosso sistema de pedidos, trazendo mais agilidade e organização ao atendimento. Porém, com o crescimento constante — já somando 3.500 clientes cadastrados —, nossa residência se tornou pequena para comportar a demanda. Foi então que transferimos nossa operação para a Av. Humberto de Alencar Castelo Branco, ainda no Jardim Flórida, o bairro onde tudo começou.
+                </p>
                 
+                <p>
+                  Quatro anos depois, com mais de 10.500 clientes cadastrados e ouvindo os inúmeros pedidos por um espaço para consumo no local, decidimos criar um ambiente familiar e acolhedor para receber nossos clientes com o carinho de sempre.
+                </p>
+                
+                <p>
+                  Hoje, atendemos exclusivamente por delivery ou retirada no balcão, em nossa nova unidade na Rua Bernardino de Campos, 143 – Centro. Nossa missão continua sendo levar até você a mesma pizza saborosa, quentinha e feita com amor — direto do forno para sua casa.
+                </p>
+                
+                <p>
+                  Para sua comodidade, aceitamos cartões de débito e crédito, com maquininhas que levamos até sua residência. Além disso, oferecemos promoções especiais todos os dias em nosso cardápio.
+                </p>
+                
+                <p className="text-right font-semibold">
+                  William & Diva<br />
+                  Com carinho, para você.
+                </p>
               </div>
             </div>
             <div className="flex justify-center">
@@ -167,6 +179,8 @@ Com carinho, para você.</p>
       </section>
 
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default About;
