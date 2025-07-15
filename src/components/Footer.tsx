@@ -1,3 +1,4 @@
+
 import { Pizza, Phone, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
 const Footer = () => {
   return <footer className="bg-gray-900 text-white">
@@ -10,7 +11,7 @@ const Footer = () => {
               <span className="font-bold text-xl">Willian Disk Pizza</span>
             </div>
             <p className="text-gray-300 text-sm">
-              Há mais de 10 anos servindo as melhores pizzas da região com ingredientes 
+              Há mais de 35 anos servindo as melhores pizzas da região com ingredientes 
               frescos e receitas tradicionais. Sua fome, nossa paixão!
             </p>
             <div className="flex space-x-4">
@@ -29,7 +30,7 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary" />
-                <span className="text-sm">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp) </span>
+                <span className="text-sm">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp) </span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-primary" />
