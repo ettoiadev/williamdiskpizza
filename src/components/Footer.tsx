@@ -1,9 +1,6 @@
-
 import { Pizza, Phone, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
-
 const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white">
+  return <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Logo and Description */}
@@ -32,11 +29,11 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary" />
-                <span className="text-sm">(11) 99999-9999</span>
+                <span className="text-sm">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp) </span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-sm">Rua das Pizzas, 123 - São Paulo, SP</span>
+                <span className="text-sm">R. Bernardino de Campos, 143 - Jacareí SP</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Clock className="h-4 w-4 text-primary" />
@@ -55,12 +52,7 @@ const Footer = () => {
               <a href="/sobre" className="block text-sm text-gray-300 hover:text-white transition-colors">
                 Quem Somos
               </a>
-              <a 
-                href="https://www.ifood.com.br" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block text-sm text-gray-300 hover:text-white transition-colors"
-              >
+              <a href="https://www.ifood.com.br" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-300 hover:text-white transition-colors">
                 Menu no iFood
               </a>
               <a href="/contato" className="block text-sm text-gray-300 hover:text-white transition-colors">
@@ -76,8 +68,6 @@ const Footer = () => {
           </p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };
-
 export default Footer;
