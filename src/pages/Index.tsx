@@ -125,9 +125,7 @@ const Index = () => {
       {/* CTA Section */}
       <section className="py-16 pizza-gradient text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">
-            Está com fome? Peça já sua pizza!
-          </h2>
+          <h2 className="text-3xl font-bold mb-6">Peça já sua pizza!</h2>
           <p className="text-xl mb-8 opacity-90">Atendemos de terça a domingo, das 18h às 23h</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-2">
