@@ -52,7 +52,7 @@ const Footer = () => {
               <a href="/sobre" className="block text-sm text-gray-300 hover:text-white transition-colors">
                 Quem Somos
               </a>
-              <a href="https://www.ifood.com.br" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-300 hover:text-white transition-colors">Menu</a>
+              <a href="https://cardapiodigital.williamdiskpizza.com.br" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-300 hover:text-white transition-colors">Menu</a>
               <a href="/contato" className="block text-sm text-gray-300 hover:text-white transition-colors">
                 Contato
               </a>
