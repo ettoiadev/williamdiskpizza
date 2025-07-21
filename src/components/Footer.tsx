@@ -7,7 +7,7 @@ const Footer = () => {
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
               <Pizza className="h-8 w-8 text-primary" />
-              <span className="font-bold text-xl">Willian Disk Pizza</span>
+              <span className="font-bold text-xl">William Disk Pizza</span>
             </div>
             <p className="text-gray-300 text-sm">
               Há mais de 35 anos servindo as melhores pizzas da região com ingredientes 
@@ -62,7 +62,7 @@ const Footer = () => {
 
         <div className="border-t border-gray-800 mt-8 pt-8 text-center">
           <p className="text-sm text-gray-400">
-            © 2024 Willian Disk Pizza. Todos os direitos reservados.
+            © 2024 William Disk Pizza. Todos os direitos reservados.
           </p>
         </div>
       </div>

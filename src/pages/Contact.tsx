@@ -127,7 +127,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Email</h3>
-                        <p className="text-gray-600 mb-2">contato@williandiskpizza.com.br</p>
+                        <p className="text-gray-600 mb-2">contato@williamdiskpizza.com.br</p>
                         <div className="flex space-x-4">
                           <a href="#" className="text-primary hover:text-primary/80 transition-colors">
                             <Instagram className="h-5 w-5" />

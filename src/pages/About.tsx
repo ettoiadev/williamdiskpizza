@@ -14,7 +14,7 @@ const About = () => {
           <div className="text-center">
             <Pizza className="h-16 w-16 text-primary mx-auto mb-6" />
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Conheça a <span className="pizza-text-gradient">Willian Disk Pizza</span>
+              Conheça a <span className="pizza-text-gradient">William Disk Pizza</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
               Uma história de paixão, tradição e muito sabor que começou há mais de 10 anos
@@ -129,7 +129,7 @@ const About = () => {
                 <div className="w-24 h-24 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Utensils className="h-12 w-12 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-2">Willian</h3>
+                <h3 className="text-xl font-semibold mb-2">William</h3>
                 <p className="text-primary font-medium mb-2">Fundador & Chef</p>
                 <p className="text-gray-600 text-sm">
                   Criador das receitas especiais e responsável pela qualidade 
