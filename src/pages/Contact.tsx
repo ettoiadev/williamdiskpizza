@@ -81,9 +81,9 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Telefone</h3>
-                        <p className="text-gray-600 mb-1">(11) 99999-9999</p>
+                        <p className="text-gray-600 mb-1">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp)</p>
                         <p className="text-sm text-gray-500">
-                          Pedidos e informações - Seg à Dom, 18h às 23h
+                          Pedidos e informações - Ter-Dom, 18h às 23h
                         </p>
                       </div>
                     </div>
@@ -98,9 +98,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Endereço</h3>
-                        <p className="text-gray-600 mb-1">Rua das Pizzas, 123</p>
-                        <p className="text-gray-600 mb-1">Bairro Centro - São Paulo, SP</p>
-                        <p className="text-gray-600">CEP: 01234-567</p>
+                        <p className="text-gray-600 mb-1">R. Bernardino de Campos, 143 - Jacareí SP</p>
                       </div>
                     </div>
                   </CardContent>
@@ -114,7 +112,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Horário de Funcionamento</h3>
-                        <p className="text-gray-600 mb-1">Segunda a Domingo</p>
+                        <p className="text-gray-600 mb-1">Terça a Domingo</p>
                         <p className="text-gray-600 font-medium">18:00 às 23:00</p>
                       </div>
                     </div>
@@ -232,7 +230,7 @@ const Contact = () => {
                 </p>
                 <Button className="pizza-gradient text-white hover:opacity-90">
                   <Phone className="mr-2 h-4 w-4" />
-                  (11) 99999-9999
+                  (12) 3951-7565
                 </Button>
               </CardContent>
             </Card>
