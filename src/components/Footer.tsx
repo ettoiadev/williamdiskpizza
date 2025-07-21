@@ -1,4 +1,3 @@
-
 import { Pizza, Phone, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
 const Footer = () => {
   return <footer className="bg-gray-900 text-white">
@@ -38,7 +37,7 @@ const Footer = () => {
               </div>
               <div className="flex items-center space-x-3">
                 <Clock className="h-4 w-4 text-primary" />
-                <span className="text-sm">Seg-Dom: 18h às 23h</span>
+                <span className="text-sm">Ter-Dom: 18h às 23h</span>
               </div>
             </div>
           </div>
