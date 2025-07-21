@@ -31,28 +31,31 @@ const About = () => {
               <h2 className="text-3xl font-bold mb-6">Nossa História</h2>
               <div className="space-y-6 text-gray-700">
                 <p>
-                  Tudo começou em 1990, na cozinha de nossa própria casa. No início, atendíamos apenas vizinhos, amigos e familiares. Com o tempo, graças à propaganda boca a boca, nossos primeiros clientes começaram a surgir — foram eles que carinhosamente passaram a nos chamar de <strong>William Disk Pizza</strong>.
+                  Há 32 anos, nossa paixão por pizza começou em casa, em 1990, servindo vizinhos, amigos e familiares.
                 </p>
                 
                 <p>
-                  Com dedicação e qualidade, fomos conquistando uma clientela fiel, que até hoje nos prestigia e nos motiva a continuar. Em 1992, demos um passo importante ao informatizar nosso sistema de pedidos, trazendo mais agilidade e organização ao atendimento. Porém, com o crescimento constante — já somando 3.500 clientes cadastrados —, nossa residência se tornou pequena para comportar a demanda. Foi então que transferimos nossa operação para a Av. Humberto de Alencar Castelo Branco, ainda no Jardim Flórida, o bairro onde tudo começou.
+                  Com o boca a boca, surgiram nossos primeiros clientes, que passaram a nos chamar de <strong>William Disk Pizza</strong>. Assim, conquistamos uma clientela fiel, que nos acompanha até hoje.
                 </p>
                 
                 <p>
-                  Quatro anos depois, com mais de 10.500 clientes cadastrados e ouvindo os inúmeros pedidos por um espaço para consumo no local, decidimos criar um ambiente familiar e acolhedor para receber nossos clientes com o carinho de sempre.
+                  Crescemos, informatizamos nosso serviço em 1992 e mudamos para espaços maiores, sempre mantendo a qualidade e o carinho no atendimento.
                 </p>
                 
                 <p>
-                  Hoje, atendemos exclusivamente por delivery ou retirada no balcão, em nossa nova unidade na Rua Bernardino de Campos, 143 – Centro. Nossa missão continua sendo levar até você a mesma pizza saborosa, quentinha e feita com amor — direto do forno para sua casa.
+                  Hoje, atendemos somente delivery em nosso endereço na Rua Bernardino de Campos, 143 – Centro. Você pode receber sua pizza quentinha em casa ou retirar no balcão.
                 </p>
                 
                 <p>
-                  Para sua comodidade, aceitamos cartões de débito e crédito, com maquininhas que levamos até sua residência. Além disso, oferecemos promoções especiais todos os dias em nosso cardápio.
+                  Aceitamos cartões e temos promoções todos os dias.
                 </p>
                 
-                <p className="text-right font-semibold">
-                  William & Diva<br />
-                  Com carinho, para você.
+                <p>
+                  Acesse: <strong>williamdiskpizza.com</strong>
+                </p>
+                
+                <p className="text-center font-semibold">
+                  Bem-vindos à tradição e sabor da <strong>William Disk Pizza</strong>!
                 </p>
               </div>
             </div>
