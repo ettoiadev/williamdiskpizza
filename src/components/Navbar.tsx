@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Pizza, ExternalLink } from 'lucide-react';
+import { Menu, X, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
 const Navbar = () => {
@@ -18,9 +18,13 @@ const Navbar = () => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <Pizza className="h-8 w-8 text-primary" />
+              <img 
+                src="/lovable-uploads/0224011b-9067-486b-a363-2b2b99b36403.png" 
+                alt="William Disk Pizza Logo" 
+                className="h-8 w-8 object-contain"
+              />
               <span className="font-bold text-xl pizza-text-gradient">
-                Willian Disk Pizza
+                William Disk Pizza
               </span>
             </Link>
           </div>
