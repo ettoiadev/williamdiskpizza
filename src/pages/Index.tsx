@@ -76,7 +76,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Tradição Familiar</h3>
                 <p className="text-gray-600">
-                  Mais de 10 anos servindo pizzas com receitas especiais da família. 
+                  32 anos servindo pizzas com receitas especiais da família. 
                   Tradição e sabor únicos!
                 </p>
               </CardContent>

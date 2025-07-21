@@ -17,7 +17,7 @@ const About = () => {
               Conheça a <span className="pizza-text-gradient">William Disk Pizza</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Uma história de paixão, tradição e muito sabor que começou há mais de 10 anos
+              Uma história de paixão, tradição e muito sabor que começou há 32 anos
             </p>
           </div>
         </div>
