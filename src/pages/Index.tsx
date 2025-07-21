@@ -130,7 +130,7 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-2">
               <Phone className="h-5 w-5" />
-              <span className="text-lg font-semibold">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp)</span>
+              <span className="text-lg font-semibold">(12) 3951-7565 / 3961-3004 / 99636-7326 (WhatsApp)</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-5 w-5" />
