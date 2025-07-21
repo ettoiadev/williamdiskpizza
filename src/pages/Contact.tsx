@@ -228,9 +228,11 @@ const Contact = () => {
                 <p className="text-gray-600 mb-6">
                   Fale diretamente com nossa equipe para fazer seu pedido personalizado
                 </p>
-                <Button className="pizza-gradient text-white hover:opacity-90">
-                  <Phone className="mr-2 h-4 w-4" />
-                  (12) 3951-7565
+                <Button className="pizza-gradient text-white hover:opacity-90" asChild>
+                  <a href="tel:+551239517565">
+                    <Phone className="mr-2 h-4 w-4" />
+                    (12) 3951-7565
+                  </a>
                 </Button>
               </CardContent>
             </Card>
@@ -245,9 +247,11 @@ const Contact = () => {
                 <Button 
                   variant="outline" 
                   className="border-primary text-primary hover:bg-primary hover:text-white"
-                  onClick={() => window.open('https://www.ifood.com.br', '_blank')}
+                  asChild
                 >
-                  Ver Menu no iFood
+                  <a href="https://cardapiodigital.williamdiskpizza.com.br" target="_blank" rel="noopener noreferrer">
+                    Ver Menu Completo
+                  </a>
                 </Button>
               </CardContent>
             </Card>

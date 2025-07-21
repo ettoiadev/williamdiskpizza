@@ -22,9 +22,11 @@ const Index = () => {
               muito amor em cada fatia. Delivery rápido e sabor inesquecível.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="pizza-gradient text-white hover:opacity-90 text-lg px-8 py-3" onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}>
-                <Phone className="mr-2 h-5 w-5" />
-                Fazer Pedido Agora
+              <Button size="lg" className="pizza-gradient text-white hover:opacity-90 text-lg px-8 py-3" asChild>
+                <a href="tel:+551239517565">
+                  <Phone className="mr-2 h-5 w-5" />
+                  Fazer Pedido Agora
+                </a>
               </Button>
               <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white text-lg px-8 py-3" onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}>
                 Ver Menu Completo
@@ -130,17 +132,19 @@ const Index = () => {
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <div className="flex items-center gap-2">
               <Phone className="h-5 w-5" />
-              <span className="text-lg font-semibold">(11) 99999-9999</span>
+              <span className="text-lg font-semibold">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp)</span>
             </div>
             <div className="flex items-center gap-2">
               <MapPin className="h-5 w-5" />
-              <span>Rua das Pizzas, 123 - São Paulo, SP</span>
+              <span>R. Bernardino de Campos, 143 - Jacareí SP</span>
             </div>
           </div>
           <div className="mt-6">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-3">
-              <Phone className="mr-2 h-5 w-5" />
-              Ligar Agora
+            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-3" asChild>
+              <a href="tel:+551239517565">
+                <Phone className="mr-2 h-5 w-5" />
+                Ligar Agora
+              </a>
             </Button>
           </div>
         </div>

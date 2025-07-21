@@ -68,9 +68,9 @@ const Navbar = () => {
             </Link>
             <Button 
               className="pizza-gradient text-white hover:opacity-90"
-              onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}
+              asChild
             >
-              Fazer Pedido
+              <a href="tel:+551239517565">Fazer Pedido</a>
             </Button>
           </div>
 
@@ -134,12 +134,9 @@ const Navbar = () => {
               <div className="px-3 py-2">
                 <Button 
                   className="w-full pizza-gradient text-white hover:opacity-90"
-                  onClick={() => {
-                    window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank');
-                    toggleMenu();
-                  }}
+                  asChild
                 >
-                  Fazer Pedido
+                  <a href="tel:+551239517565">Fazer Pedido</a>
                 </Button>
               </div>
             </div>
