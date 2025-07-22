@@ -20,30 +20,28 @@ const Index = () => {
       <section className="relative bg-gradient-to-br from-primary/10 to-primary/5 py-20 overflow-hidden">
         <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width=%2260%22 height=%2260%22 viewBox=%220 0 60 60%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cg fill=%22none%22 fill-rule=%22evenodd%22%3E%3Cg fill=%22%23ef4444%22 fill-opacity=%220.05%22%3E%3Ccircle cx=%2230%22 cy=%2230%22 r=%222%22/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] animate-pulse"></div>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="text-center">
-            <div className="flex justify-center mb-6">
-              <div className="relative">
-                <Pizza className="h-16 w-16 text-primary animate-bounce" />
-                <Flame className="h-6 w-6 text-orange-500 absolute -top-2 -right-2 animate-pulse" />
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            <div className="flex-1 text-center lg:text-left">
+              <div className="flex justify-center lg:justify-start mb-6">
+                <div className="relative">
+                  <Pizza className="h-16 w-16 text-primary animate-bounce" />
+                  <Flame className="h-6 w-6 text-orange-500 absolute -top-2 -right-2 animate-pulse" />
+                </div>
               </div>
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
+                <span className="pizza-text-gradient">William Disk Pizza</span>
+              </h1>
+              <p className="text-xl md:text-2xl text-gray-600 max-w-2xl animate-fade-in">
+                As melhores pizzas da região há 32 anos! Ingredientes frescos, massa artesanal e 
+                muito amor em cada fatia. Delivery rápido e sabor inesquecível.
+              </p>
             </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-              <span className="pizza-text-gradient">William Disk Pizza</span>
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto animate-fade-in">
-              As melhores pizzas da região há 32 anos! Ingredientes frescos, massa artesanal e 
-              muito amor em cada fatia. Delivery rápido e sabor inesquecível.
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in">
-              <Button size="lg" className="pizza-gradient text-white hover:opacity-90 text-lg px-8 py-3 hover:scale-105 transition-transform" asChild>
-                <a href="tel:+551239517565">
-                  <Phone className="mr-2 h-5 w-5" />
-                  Fazer Pedido Agora
-                </a>
-              </Button>
-              <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white text-lg px-8 py-3 hover:scale-105 transition-transform" onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}>
-                Ver Menu Completo
-              </Button>
+            <div className="flex-1 animate-fade-in">
+              <img
+                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=400&fit=crop"
+                alt="Deliciosa pizza William Disk Pizza"
+                className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+              />
             </div>
           </div>
         </div>
