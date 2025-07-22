@@ -34,15 +34,6 @@ const Index = () => {
             </div>
           </div>
         </div>
-        
-        {/* Pizzaiolo Image */}
-        <div className="w-full h-64 md:h-96">
-          <img 
-            src="/lovable-uploads/0224011b-9067-486b-a363-2b2b99b36403.png"
-            alt="Pizzaiolo tirando pizza do forno"
-            className="w-full h-full object-cover"
-          />
-        </div>
       </section>
 
       {/* Features Section */}
