@@ -47,7 +47,10 @@ const About = () => {
                 </p>
                 
                 <p>
-                  Aceitamos cartões e temos promoções todos os dias. Bem-vindos à tradição e sabor da <strong>William Disk Pizza</strong>!
+                  Aceitamos cartões e temos promoções todos os dias.
+                </p>
+                <p>
+                  Bem-vindos à tradição e sabor da <strong>William Disk Pizza</strong>!
                 </p>
               </div>
             </div>
@@ -122,7 +125,7 @@ const About = () => {
                   <Utensils className="h-12 w-12 text-primary" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">William</h3>
-                <p className="text-primary font-medium mb-2">Fundador & Chef</p>
+                <p className="text-primary font-medium mb-2">Fundador</p>
                 <p className="text-gray-600 text-sm">
                   Criador das receitas especiais e responsável pela qualidade 
                   de cada pizza que sai do forno.
