@@ -120,63 +120,25 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Specialties Section com imagens melhoradas */}
+      {/* Location Section */}
       <section className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-center mb-12">
-            Nossas <span className="pizza-text-gradient">Especialidades</span>
+            Onde <span className="pizza-text-gradient">Estamos</span>
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              {
-                name: 'Pizza Margherita',
-                desc: 'Tradicional com manjericão fresco',
-                image: 'https://images.unsplash.com/photo-1513104890138-7c749659a591?w=300&h=200&fit=crop',
-                price: 'A partir de R$ 35,90'
-              },
-              {
-                name: 'Pizza Pepperoni',
-                desc: 'Clássica americana com muito sabor',
-                image: 'https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?w=300&h=200&fit=crop',
-                price: 'A partir de R$ 42,90'
-              },
-              {
-                name: 'Pizza Quatro Queijos',
-                desc: 'Mix perfeito dos melhores queijos',
-                image: 'https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=300&h=200&fit=crop',
-                price: 'A partir de R$ 45,90'
-              },
-              {
-                name: 'Pizza Portuguesa',
-                desc: 'Completa com ingredientes especiais',
-                image: 'https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=300&h=200&fit=crop',
-                price: 'A partir de R$ 48,90'
-              }
-            ].map((pizza, index) => (
-              <Card key={index} className="hover:shadow-lg transition-all duration-300 hover:scale-105 group overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="relative overflow-hidden">
-                    <img
-                      src={pizza.image}
-                      alt={pizza.name}
-                      className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                    />
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  </div>
-                  <div className="p-4">
-                    <h3 className="font-semibold text-lg mb-2">{pizza.name}</h3>
-                    <p className="text-sm text-gray-600 mb-2">{pizza.desc}</p>
-                    <p className="text-primary font-bold">{pizza.price}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-8">
-            <Button className="pizza-gradient text-white hover:opacity-90 hover:scale-105 transition-transform" onClick={() => window.open('https://cardapiodigital.williamdiskpizza.com.br', '_blank')}>
-              Ver Menu Completo
-            </Button>
-          </div>
+        </div>
+        <div className="border-4 border-primary/60">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.4!2d-45.9658!3d-23.2955!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94cc4a7e7b7b7b7b%3A0x7b7b7b7b7b7b7b7b!2sR.%20Bernardino%20de%20Campos%2C%20143%20-%20Jacare%C3%AD%2C%20SP!5e0!3m2!1spt!2sbr!4v1234567890"
+            width="100%"
+            height="400"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Localização William Disk Pizza"
+            className="w-full"
+          ></iframe>
         </div>
       </section>
 
