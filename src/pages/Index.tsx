@@ -38,8 +38,8 @@ const Index = () => {
             </div>
             <div className="flex-1 animate-fade-in">
               <img
-                src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=600&h=400&fit=crop"
-                alt="Deliciosa pizza William Disk Pizza"
+                src="/lovable-uploads/f16f8dd6-6832-4d92-9d77-586f8cfac02b.png"
+                alt="Deliciosas pizzas William Disk Pizza"
                 className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
               />
             </div>
