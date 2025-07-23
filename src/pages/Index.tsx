@@ -146,26 +146,19 @@ const Index = () => {
 
       {/* CTA Section */}
       <section className="py-16 pizza-gradient text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold mb-6">Peça já sua pizza!</h2>
-          <p className="text-xl mb-8 opacity-90">Atendemos de terça a domingo, das 18h às 23h</p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <div className="flex items-center gap-2">
-              <Phone className="h-5 w-5" />
-              <span className="text-lg font-semibold">(12) 3951-7565 / 3961-3004 / 99636-7326 (WhatsApp)</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
+            <div className="flex-1 text-left">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Peça já sua pizza!</h2>
+              <p className="text-xl md:text-2xl opacity-90">Atendemos de terça a domingo, das 18h às 23h</p>
             </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="h-5 w-5" />
-              <span>R. Bernardino de Campos, 143 - Jacareí SP</span>
+            <div className="flex-1 animate-fade-in">
+              <img
+                src="/lovable-uploads/edc27908-56a9-4a5b-9e5a-a0ac68a9e155.png"
+                alt="Deliciosa pizza com ingredientes frescos"
+                className="w-full h-80 lg:h-96 object-contain rounded-2xl"
+              />
             </div>
-          </div>
-          <div className="mt-6">
-            <Button size="lg" variant="secondary" className="bg-white text-primary hover:bg-gray-100 text-lg px-8 py-3 hover:scale-105 transition-transform" asChild>
-              <a href="tel:+551239517565">
-                <Phone className="mr-2 h-5 w-5" />
-                Ligar Agora
-              </a>
-            </Button>
           </div>
         </div>
       </section>
