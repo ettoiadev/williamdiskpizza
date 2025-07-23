@@ -47,15 +47,7 @@ const About = () => {
                 </p>
                 
                 <p>
-                  Aceitamos cartões e temos promoções todos os dias.
-                </p>
-                
-                <p>
-                  Acesse: <strong>williamdiskpizza.com</strong>
-                </p>
-                
-                <p className="text-center font-semibold">
-                  Bem-vindos à tradição e sabor da <strong>William Disk Pizza</strong>!
+                  Aceitamos cartões e temos promoções todos os dias. Bem-vindos à tradição e sabor da <strong>William Disk Pizza</strong>!
                 </p>
               </div>
             </div>
