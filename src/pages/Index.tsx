@@ -40,7 +40,7 @@ const Index = () => {
               <img
                 src="/lovable-uploads/f16f8dd6-6832-4d92-9d77-586f8cfac02b.png"
                 alt="Deliciosas pizzas William Disk Pizza"
-                className="w-full h-80 lg:h-96 object-cover rounded-2xl shadow-lg hover:scale-105 transition-transform duration-300"
+                className="w-full h-80 lg:h-96 object-contain"
               />
             </div>
           </div>
