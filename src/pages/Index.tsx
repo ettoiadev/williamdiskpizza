@@ -145,18 +145,18 @@ const Index = () => {
       <Testimonials />
 
       {/* CTA Section */}
-      <section className="py-16 pizza-gradient text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col lg:flex-row items-center gap-8 lg:gap-12">
-            <div className="flex-1 text-left">
+      <section className="relative py-8 pizza-gradient text-white overflow-visible">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="flex flex-col lg:flex-row items-end gap-8 lg:gap-12">
+            <div className="flex-1 text-left py-8">
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Peça já sua pizza!</h2>
               <p className="text-xl md:text-2xl opacity-90">Atendemos de terça a domingo, das 18h às 23h</p>
             </div>
-            <div className="flex-1 animate-fade-in">
+            <div className="flex-1 relative lg:-mt-20 animate-fade-in">
               <img
                 src="/lovable-uploads/edc27908-56a9-4a5b-9e5a-a0ac68a9e155.png"
                 alt="Deliciosa pizza com ingredientes frescos"
-                className="w-full h-80 lg:h-96 object-contain rounded-2xl"
+                className="w-full h-80 lg:h-96 object-contain rounded-2xl relative z-10"
               />
             </div>
           </div>
