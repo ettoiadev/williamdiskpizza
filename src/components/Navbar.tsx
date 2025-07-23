@@ -21,7 +21,7 @@ const Navbar = () => {
               <img 
                 src="/lovable-uploads/0224011b-9067-486b-a363-2b2b99b36403.png" 
                 alt="William Disk Pizza Logo" 
-                className="h-8 w-8 object-contain"
+                className="h-10 w-10 object-contain"
               />
               <span className="font-bold text-xl pizza-text-gradient">
                 William Disk Pizza
