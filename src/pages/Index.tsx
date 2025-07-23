@@ -142,10 +142,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Gallery Section */}
-      <Gallery />
-
-      {/* Testimonials Section */}
       <Testimonials />
 
       {/* CTA Section */}
