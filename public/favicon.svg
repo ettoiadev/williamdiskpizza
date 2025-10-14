@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <!-- Círculo azul externo -->
+  <circle cx="50" cy="50" r="50" fill="#0040ff" />
+  
+  <!-- Círculo vermelho interno -->
+  <circle cx="50" cy="50" r="42" fill="#ff0000" />
+  
+  <!-- Texto "William" em amarelo, curvado na parte superior -->
+  <path d="M20,30 Q50,10 80,30" fill="none" id="williamPath" />
+  <text fill="#ffff00" font-family="Arial" font-weight="bold" font-size="12">
+    <textPath href="#williamPath" startOffset="50%" text-anchor="middle">William</textPath>
+  </text>
+  
+  <!-- Texto "Disk-Pizza" em branco, no centro -->
+  <text x="50" y="50" fill="#ffffff" font-family="Arial" font-weight="bold" font-size="12" text-anchor="middle">Disk-Pizza</text>
+  
+  <!-- Número de telefone em amarelo, na parte inferior -->
+  <text x="50" y="65" fill="#ffff00" font-family="Arial" font-weight="bold" font-size="14" text-anchor="middle">3951-7565</text>
+</svg>
