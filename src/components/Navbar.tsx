@@ -19,7 +19,7 @@ const Navbar = () => {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
               <img 
-                src="/lovable-uploads/0224011b-9067-486b-a363-2b2b99b36403.png" 
+                src="/images/0224011b-9067-486b-a363-2b2b99b36403.png" 
                 alt="William Disk Pizza Logo" 
                 className="h-10 w-10 object-contain"
               />

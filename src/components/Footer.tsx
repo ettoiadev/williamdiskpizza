@@ -9,7 +9,7 @@ const Footer = () => {
               <Pizza className="h-8 w-8 text-primary" />
               <span className="font-bold text-xl">William Disk Pizza</span>
             </div>
-            <p className="text-gray-300 text-sm">Há 32 anos servindo as melhores pizzas da região com ingredientes frescos e receitas tradicionais.</p>
+            <p className="text-gray-300 text-sm">Há 35 anos servindo as melhores pizzas da região com ingredientes frescos e receitas tradicionais.</p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-primary transition-colors">
                 <Instagram className="h-5 w-5" />

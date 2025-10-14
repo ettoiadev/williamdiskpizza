@@ -1,58 +1,52 @@
-# Welcome to your Lovable project
+# William Disk Pizza
 
-## Project info
+## Sobre o projeto
 
-**URL**: https://lovable.dev/projects/514bc962-c2ee-44f4-b8eb-31a6472aec4d
+Site da pizzaria William Disk Pizza, com informações sobre o estabelecimento, cardápio e contato.
 
-## How can I edit this code?
+## Como editar este código?
 
-There are several ways of editing your application.
+Existem várias maneiras de editar esta aplicação.
 
-**Use Lovable**
+**Use seu IDE preferido**
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/514bc962-c2ee-44f4-b8eb-31a6472aec4d) and start prompting.
+Para trabalhar localmente usando seu próprio IDE, você pode clonar este repositório e enviar alterações.
 
-Changes made via Lovable will be committed automatically to this repo.
+O único requisito é ter Node.js e npm instalados - [instale com nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
+Siga estes passos:
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Passo 1: Clone o repositório usando a URL Git do projeto.
+git clone <URL_DO_GIT>
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Passo 2: Navegue até o diretório do projeto.
+cd williamdiskpizza
 
-# Step 3: Install the necessary dependencies.
+# Passo 3: Instale as dependências necessárias.
 npm i
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Passo 4: Inicie o servidor de desenvolvimento com recarga automática e visualização instantânea.
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+**Edite um arquivo diretamente no GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- Navegue até o(s) arquivo(s) desejado(s).
+- Clique no botão "Editar" (ícone de lápis) no canto superior direito da visualização do arquivo.
+- Faça suas alterações e confirme as alterações.
 
 **Use GitHub Codespaces**
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+- Navegue até a página principal do seu repositório.
+- Clique no botão "Code" (botão verde) próximo ao canto superior direito.
+- Selecione a guia "Codespaces".
+- Clique em "New codespace" para iniciar um novo ambiente Codespace.
+- Edite arquivos diretamente no Codespace e confirme e envie suas alterações quando terminar.
 
-## What technologies are used for this project?
+## Quais tecnologias são usadas neste projeto?
 
-This project is built with:
+Este projeto é construído com:
 
 - Vite
 - TypeScript
@@ -60,14 +54,10 @@ This project is built with:
 - shadcn-ui
 - Tailwind CSS
 
-## How can I deploy this project?
+## Como posso implantar este projeto?
 
-Simply open [Lovable](https://lovable.dev/projects/514bc962-c2ee-44f4-b8eb-31a6472aec4d) and click on Share -> Publish.
+Você pode implantar este projeto usando serviços como Vercel, Netlify ou GitHub Pages.
 
-## Can I connect a custom domain to my Lovable project?
+## Posso conectar um domínio personalizado ao meu projeto?
 
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+Sim, você pode! Basta configurar o DNS do seu domínio para apontar para o serviço de hospedagem que você escolher.

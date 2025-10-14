@@ -32,13 +32,13 @@ const Index = () => {
                 <span className="pizza-text-gradient">William Disk Pizza</span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 max-w-2xl animate-fade-in">
-                As melhores pizzas da região há 32 anos! Ingredientes frescos, massa artesanal e 
+                As melhores pizzas da região há 35 anos! Ingredientes frescos, massa artesanal e 
                 muito amor em cada fatia. Delivery rápido e sabor inesquecível.
               </p>
             </div>
             <div className="flex-1 animate-fade-in">
               <img
-                src="/lovable-uploads/f16f8dd6-6832-4d92-9d77-586f8cfac02b.png"
+                src="/images/f16f8dd6-6832-4d92-9d77-586f8cfac02b.png"
                 alt="Deliciosas pizzas William Disk Pizza"
                 className="w-full h-80 lg:h-96 object-contain"
               />
@@ -52,7 +52,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="animate-fade-in">
-              <div className="text-3xl font-bold text-primary mb-2">32</div>
+              <div className="text-3xl font-bold text-primary mb-2">35</div>
               <div className="text-sm text-gray-600">Anos de Tradição</div>
             </div>
             <div className="animate-fade-in">
@@ -111,7 +111,7 @@ const Index = () => {
                 </div>
                 <h3 className="text-xl font-semibold mb-3">Tradição Familiar</h3>
                 <p className="text-gray-600">
-                  32 anos servindo pizzas com receitas especiais da família. 
+                  35 anos servindo pizzas com receitas especiais da família. 
                   Tradição e sabor únicos!
                 </p>
               </CardContent>
@@ -154,7 +154,7 @@ const Index = () => {
             </div>
             <div className="flex-1 relative lg:-mt-20 animate-fade-in">
               <img
-                src="/lovable-uploads/edc27908-56a9-4a5b-9e5a-a0ac68a9e155.png"
+                src="/images/edc27908-56a9-4a5b-9e5a-a0ac68a9e155.png"
                 alt="Deliciosa pizza com ingredientes frescos"
                 className="w-full h-80 lg:h-96 object-contain rounded-2xl relative z-10"
               />
