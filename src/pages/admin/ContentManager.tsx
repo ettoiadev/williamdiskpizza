@@ -47,28 +47,93 @@ export default function ContentManager() {
     setFormData(prev => ({ ...prev, [key]: value }));
   };
 
+  /**
+   * Validar URL
+   */
+  const isValidUrl = (string: string): boolean => {
+    try {
+      const url = new URL(string);
+      return url.protocol === 'http:' || url.protocol === 'https:';
+    } catch {
+      return false;
+    }
+  };
+
+  /**
+   * Salvar alterações com validação
+   */
   const handleSave = () => {
-    const updates = Object.entries(formData).map(([key, value]) => {
-      // Determinar tipo baseado no valor
-      let type: 'text' | 'image' | 'json' | 'number' = 'text';
-      
-      if (typeof value === 'number') {
-        type = 'number';
-      } else if (typeof value === 'object') {
-        type = 'json';
-      } else if (typeof value === 'string' && value.startsWith('http')) {
-        type = 'image';
+    try {
+      // ✅ Filtrar e validar entradas
+      const updates = Object.entries(formData)
+        .filter(([_, value]) => {
+          // Remover valores nulos, undefined ou strings vazias
+          if (value === null || value === undefined) return false;
+          if (typeof value === 'string' && value.trim() === '') return false;
+          return true;
+        })
+        .map(([key, value]) => {
+          // Determinar tipo baseado no valor com validação
+          let type: 'text' | 'image' | 'json' | 'number' = 'text';
+          let processedValue = value;
+          
+          if (typeof value === 'number') {
+            // ✅ Validar número
+            if (!isNaN(value) && isFinite(value)) {
+              type = 'number';
+            } else {
+              throw new Error(`Campo "${key}" contém número inválido`);
+            }
+          } else if (typeof value === 'object' && value !== null) {
+            // ✅ Validar objeto (não aceitar arrays vazios)
+            if (Array.isArray(value)) {
+              if (value.length === 0) {
+                throw new Error(`Campo "${key}" contém array vazio`);
+              }
+            }
+            type = 'json';
+          } else if (typeof value === 'string') {
+            const trimmedValue = value.trim();
+            
+            // ✅ Validar tamanho (limite de 50KB)
+            const sizeInBytes = new Blob([trimmedValue]).size;
+            if (sizeInBytes > 50000) {
+              throw new Error(`Campo "${key}" excede limite de 50KB (tamanho: ${Math.round(sizeInBytes / 1024)}KB)`);
+            }
+            
+            // ✅ Validar URL corretamente
+            if (trimmedValue.startsWith('http://') || trimmedValue.startsWith('https://')) {
+              if (isValidUrl(trimmedValue)) {
+                type = 'image';
+              } else {
+                throw new Error(`Campo "${key}" contém URL inválida: ${trimmedValue}`);
+              }
+            }
+            
+            processedValue = trimmedValue;
+          }
+
+          return {
+            section: activeSection,
+            key,
+            value: processedValue,
+            type,
+          };
+        });
+
+      // ✅ Verificar se há alterações para salvar
+      if (updates.length === 0) {
+        console.warn('[ContentManager] Nenhuma alteração válida para salvar');
+        return;
       }
 
-      return {
-        section: activeSection,
-        key,
-        value,
-        type,
-      };
-    });
-
-    updateMutation.mutate(updates);
+      console.log('[ContentManager] Salvando', updates.length, 'itens');
+      updateMutation.mutate(updates);
+    } catch (error) {
+      console.error('[ContentManager] Erro ao validar dados:', error);
+      // Mostrar erro ao usuário
+      alert(error instanceof Error ? error.message : 'Erro ao validar dados');
+    }
   };
 
   if (isLoading) {

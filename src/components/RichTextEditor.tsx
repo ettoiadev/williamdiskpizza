@@ -30,7 +30,7 @@ import {
   Heading3
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 
 interface RichTextEditorProps {
   value: string;
@@ -49,6 +49,9 @@ export function RichTextEditor({
   minHeight = '200px'
 }: RichTextEditorProps) {
   
+  // ✅ Ref para prevenir loops infinitos
+  const isUpdatingRef = useRef(false);
+
   const editor = useEditor({
     extensions: [
       StarterKit.configure({
@@ -66,7 +69,10 @@ export function RichTextEditor({
     ],
     content: value,
     onUpdate: ({ editor }) => {
-      onChange(editor.getHTML());
+      // ✅ Prevenir loop: só chamar onChange se não estiver atualizando externamente
+      if (!isUpdatingRef.current) {
+        onChange(editor.getHTML());
+      }
     },
     editorProps: {
       attributes: {
@@ -75,12 +81,46 @@ export function RichTextEditor({
     },
   });
 
-  // Atualizar conteúdo quando value mudar externamente
+  // ✅ Atualizar conteúdo quando value mudar externamente (sem causar loop)
   useEffect(() => {
-    if (editor && value !== editor.getHTML()) {
-      editor.commands.setContent(value);
+    if (!editor) return;
+    
+    // Normalizar HTML para comparação (remover espaços extras)
+    const normalizeHtml = (html: string) => {
+      return html
+        .replace(/\s+/g, ' ')  // Múltiplos espaços -> 1 espaço
+        .replace(/> </g, '><')  // Remover espaços entre tags
+        .trim();
+    };
+
+    const currentContent = normalizeHtml(editor.getHTML());
+    const newContent = normalizeHtml(value || '');
+    
+    // Só atualizar se realmente diferente
+    if (currentContent !== newContent) {
+      isUpdatingRef.current = true;
+      
+      // Salvar posição do cursor
+      const { from, to } = editor.state.selection;
+      
+      // Atualizar conteúdo sem emitir evento de update
+      editor.commands.setContent(value || '', false);
+      
+      // Tentar restaurar posição do cursor (se possível)
+      try {
+        if (from <= editor.state.doc.content.size) {
+          editor.commands.setTextSelection({ from: Math.min(from, editor.state.doc.content.size), to: Math.min(to, editor.state.doc.content.size) });
+        }
+      } catch {
+        // Ignorar erro se posição inválida
+      }
+      
+      // Resetar flag após um pequeno delay
+      setTimeout(() => {
+        isUpdatingRef.current = false;
+      }, 100);
     }
-  }, [value, editor]);
+  }, [value]);  // ✅ Remover editor das dependências
 
   if (!editor) {
     return null;

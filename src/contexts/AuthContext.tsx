@@ -97,35 +97,55 @@ export function AuthProvider({ children }: AuthProviderProps) {
    * Inicializar auth state
    */
   useEffect(() => {
-    // Buscar sessão inicial
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setSession(session);
-      setUser(session?.user ?? null);
-      
-      if (session?.user) {
-        loadAdminUser(session.user.id);
+    let mounted = true;
+
+    // Função async para inicializar autenticação
+    const initAuth = async () => {
+      try {
+        const { data: { session } } = await supabase.auth.getSession();
+        
+        if (!mounted) return;
+        
+        setSession(session);
+        setUser(session?.user ?? null);
+        
+        if (session?.user) {
+          // ✅ AGUARDAR o carregamento do admin user antes de definir loading=false
+          await loadAdminUser(session.user.id);
+        }
+        
+        if (mounted) {
+          setLoading(false);
+        }
+      } catch (error) {
+        console.error('[AuthContext] Error initializing auth:', error);
+        if (mounted) {
+          setLoading(false);
+        }
       }
-      
-      setLoading(false);
-    });
+    };
+
+    initAuth();
 
     // Escutar mudanças na autenticação
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+      if (!mounted) return;
+      
       setSession(session);
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        loadAdminUser(session.user.id);
+        // ✅ AGUARDAR o carregamento do admin user
+        await loadAdminUser(session.user.id);
       } else {
         setAdminUser(null);
       }
-      
-      setLoading(false);
     });
 
     return () => {
+      mounted = false;
       subscription.unsubscribe();
     };
   }, []);
