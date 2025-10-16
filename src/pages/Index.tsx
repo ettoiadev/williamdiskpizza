@@ -7,9 +7,21 @@ import Gallery from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
 import PromoBanner from '@/components/PromoBanner';
-import { Pizza, Clock, Star, Phone, MapPin, Heart, Award, Users, Flame } from 'lucide-react';
+import { Pizza, Clock, Star, Phone, MapPin, Heart, Award, Users, Flame, Loader2 } from 'lucide-react';
+import { useContentBySection } from '@/hooks/use-content';
 
 const Index = () => {
+  // Buscar dados dinâmicos
+  const { data: heroData } = useContentBySection('hero');
+  const { data: statsData } = useContentBySection('stats');
+  const { data: featuresData } = useContentBySection('features');
+  
+  // Função helper para pegar valor do conteúdo
+  const getContent = (data: any[] | undefined, key: string, fallback: any = '') => {
+    if (!data) return fallback;
+    const item = data.find(i => i.key === key);
+    return item?.value ?? fallback;
+  };
   return (
     <div className="min-h-screen bg-background">
       <PromoBanner />
@@ -29,16 +41,17 @@ const Index = () => {
                 </div>
               </div>
               <h1 className="text-4xl md:text-6xl font-bold mb-6 animate-fade-in">
-                <span className="pizza-text-gradient">William Disk Pizza</span>
+                <span className="pizza-text-gradient">
+                  {getContent(heroData, 'title', 'William Disk Pizza')}
+                </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 max-w-2xl animate-fade-in">
-                As melhores pizzas da região há 35 anos! Ingredientes frescos, massa artesanal e 
-                muito amor em cada fatia. Delivery rápido e sabor inesquecível.
+                {getContent(heroData, 'subtitle', 'As melhores pizzas da região há 35 anos! Ingredientes frescos, massa artesanal e muito amor em cada fatia. Delivery rápido e sabor inesquecível.')}
               </p>
             </div>
             <div className="flex-1 animate-fade-in">
               <img
-                src="/images/f16f8dd6-6832-4d92-9d77-586f8cfac02b.png"
+                src={getContent(heroData, 'image_url', '/images/f16f8dd6-6832-4d92-9d77-586f8cfac02b.png')}
                 alt="Deliciosas pizzas William Disk Pizza"
                 className="w-full h-80 lg:h-96 object-contain"
               />
@@ -52,19 +65,27 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div className="animate-fade-in">
-              <div className="text-3xl font-bold text-primary mb-2">35</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                {getContent(statsData, 'years', 35)}
+              </div>
               <div className="text-sm text-gray-600">Anos de Tradição</div>
             </div>
             <div className="animate-fade-in">
-              <div className="text-3xl font-bold text-primary mb-2">+10k</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                {getContent(statsData, 'clients', '+10k')}
+              </div>
               <div className="text-sm text-gray-600">Clientes Felizes</div>
             </div>
             <div className="animate-fade-in">
-              <div className="text-3xl font-bold text-primary mb-2">30min</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                {getContent(statsData, 'delivery_time', '30min')}
+              </div>
               <div className="text-sm text-gray-600">Entrega Rápida</div>
             </div>
             <div className="animate-fade-in">
-              <div className="text-3xl font-bold text-primary mb-2">4.9★</div>
+              <div className="text-3xl font-bold text-primary mb-2">
+                {getContent(statsData, 'rating', '4.9★')}
+              </div>
               <div className="text-sm text-gray-600">Avaliação</div>
             </div>
           </div>

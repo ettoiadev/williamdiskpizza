@@ -3,14 +3,19 @@ import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ExternalLink } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useSettings } from '@/hooks/use-settings';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const { data: settings } = useSettings();
 
   const isActive = (path: string) => location.pathname === path;
 
   const toggleMenu = () => setIsOpen(!isOpen);
+
+  // Buscar telefone para pedidos das configurações
+  const orderPhone = settings?.find(s => s.key === 'site.order_phone')?.value || '+551239517565';
 
   return (
     <nav className="bg-white shadow-lg sticky top-0 z-50">
@@ -74,7 +79,7 @@ const Navbar = () => {
               className="pizza-gradient text-white hover:opacity-90"
               asChild
             >
-              <a href="tel:+551239517565">Fazer Pedido</a>
+              <a href={`tel:${orderPhone}`}>Fazer Pedido</a>
             </Button>
           </div>
 
@@ -140,7 +145,7 @@ const Navbar = () => {
                   className="w-full pizza-gradient text-white hover:opacity-90"
                   asChild
                 >
-                  <a href="tel:+551239517565">Fazer Pedido</a>
+                  <a href={`tel:${orderPhone}`}>Fazer Pedido</a>
                 </Button>
               </div>
             </div>

@@ -1,51 +1,23 @@
 
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Loader2, Image as ImageIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useGallery } from '@/hooks/use-gallery';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-
-  // Placeholder images - na implementação real, substitua por fotos reais das pizzas
-  const images = [
-    {
-      id: 1,
-      src: "https://images.unsplash.com/photo-1513104890138-7c749659a591?w=500&h=400&fit=crop",
-      alt: "Pizza Margherita artesanal",
-      title: "Pizza Margherita"
-    },
-    {
-      id: 2,
-      src: "https://images.unsplash.com/photo-1520201163981-8cc95007dd2a?w=500&h=400&fit=crop",
-      alt: "Pizza Pepperoni tradicional",
-      title: "Pizza Pepperoni"
-    },
-    {
-      id: 3,
-      src: "https://images.unsplash.com/photo-1571997478779-2adcbbe9ab2f?w=500&h=400&fit=crop",
-      alt: "Pizza Quatro Queijos especial",
-      title: "Pizza Quatro Queijos"
-    },
-    {
-      id: 4,
-      src: "https://images.unsplash.com/photo-1604382354936-07c5d9983bd3?w=500&h=400&fit=crop",
-      alt: "Pizza Portuguesa completa",
-      title: "Pizza Portuguesa"
-    },
-    {
-      id: 5,
-      src: "https://images.unsplash.com/photo-1628840042765-356cda07504e?w=500&h=400&fit=crop",
-      alt: "Pizzaiolo preparando massa",
-      title: "Nosso Pizzaiolo"
-    },
-    {
-      id: 6,
-      src: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=500&h=400&fit=crop",
-      alt: "Forno a lenha tradicional",
-      title: "Forno Artesanal"
-    }
-  ];
+  
+  // Buscar galeria do banco (apenas itens ativos)
+  const { data: galleryData, isLoading } = useGallery(true);
+  
+  // Mapear dados para formato do componente
+  const images = galleryData?.map(item => ({
+    id: item.id,
+    src: item.image_url,
+    alt: item.alt_text,
+    title: item.title
+  })) || [];
 
   const openModal = (index: number) => {
     setSelectedImage(index);
@@ -66,6 +38,39 @@ const Gallery = () => {
       setSelectedImage(selectedImage === 0 ? images.length - 1 : selectedImage - 1);
     }
   };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Nossa <span className="pizza-text-gradient">Galeria</span>
+          </h2>
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Empty state
+  if (!images || images.length === 0) {
+    return (
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            Nossa <span className="pizza-text-gradient">Galeria</span>
+          </h2>
+          <div className="text-center py-12">
+            <ImageIcon className="h-16 w-16 mx-auto mb-4 text-gray-300" />
+            <p className="text-gray-500">Nenhuma foto disponível no momento</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 bg-white">

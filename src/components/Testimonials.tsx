@@ -1,31 +1,12 @@
 
 import { Card, CardContent } from '@/components/ui/card';
-import { Star, Quote } from 'lucide-react';
+import { Star, Quote, Loader2, MessageSquare } from 'lucide-react';
+import { useTestimonials, useAverageRating } from '@/hooks/use-testimonials';
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      id: 1,
-      name: "Maria Silva",
-      rating: 5,
-      comment: "A melhor pizza de Jacareí! A massa é perfeita e os ingredientes são sempre frescos. Já sou cliente há mais de 10 anos.",
-      location: "Centro, Jacareí"
-    },
-    {
-      id: 2,
-      name: "João Santos",
-      rating: 5,
-      comment: "Delivery sempre pontual e as pizzas chegam quentinhas. A pizza portuguesa é sensacional! Recomendo para toda família.",
-      location: "Vila Branca, Jacareí"
-    },
-    {
-      id: 3,
-      name: "Ana Costa",
-      rating: 5,
-      comment: "Tradição e qualidade que se mantém ao longo dos anos. A pizza margherita é a minha favorita. Atendimento sempre excelente!",
-      location: "Jardim Paraíba, Jacareí"
-    }
-  ];
+  // Buscar depoimentos ativos do banco
+  const { data: testimonials, isLoading } = useTestimonials({ is_active: true });
+  const { data: averageRating } = useAverageRating();
 
   const renderStars = (rating: number) => {
     return Array.from({ length: 5 }, (_, index) => (
@@ -37,6 +18,39 @@ const Testimonials = () => {
       />
     ));
   };
+
+  // Loading state
+  if (isLoading) {
+    return (
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            O que nossos <span className="pizza-text-gradient">clientes</span> dizem
+          </h2>
+          <div className="flex items-center justify-center py-12">
+            <Loader2 className="h-12 w-12 animate-spin text-primary" />
+          </div>
+        </div>
+      </section>
+    );
+  }
+
+  // Empty state
+  if (!testimonials || testimonials.length === 0) {
+    return (
+      <section className="py-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-center mb-12">
+            O que nossos <span className="pizza-text-gradient">clientes</span> dizem
+          </h2>
+          <div className="text-center py-12">
+            <MessageSquare className="h-16 w-16 mx-auto mb-4 text-gray-300" />
+            <p className="text-gray-500">Nenhum depoimento disponível no momento</p>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="py-16 bg-gray-50">
@@ -71,7 +85,7 @@ const Testimonials = () => {
         
         <div className="text-center mt-8">
           <p className="text-gray-600">
-            +500 avaliações positivas • ⭐ 4.9/5.0 
+            {testimonials.length}+ avaliações • ⭐ {averageRating || 5.0}/5.0 
           </p>
         </div>
       </div>
