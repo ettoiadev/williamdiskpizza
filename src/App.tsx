@@ -20,7 +20,29 @@ import UsersManager from "./pages/admin/UsersManager";
 import SettingsManager from "./pages/admin/SettingsManager";
 import MediaManager from "./pages/admin/MediaManager";
 
-const queryClient = new QueryClient();
+const queryClient = new QueryClient({
+  defaultOptions: {
+    queries: {
+      // ✅ Dados ficam "fresh" por apenas 30 segundos
+      staleTime: 30 * 1000, // 30s
+      
+      // ✅ Cache mantido por 5 minutos
+      gcTime: 5 * 60 * 1000, // 5min (antes era cacheTime)
+      
+      // ✅ Refetch quando usuário retorna à aba
+      refetchOnWindowFocus: true,
+      
+      // ✅ Refetch quando reconecta à internet
+      refetchOnReconnect: true,
+      
+      // ✅ Não retentar em caso de erro (para não sobrecarregar)
+      retry: 1,
+      
+      // ✅ Tempo de retry
+      retryDelay: 1000,
+    },
+  },
+});
 
 const App = () => (
   <QueryClientProvider client={queryClient}>

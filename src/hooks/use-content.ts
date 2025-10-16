@@ -38,6 +38,10 @@ export function useContent() {
       if (error) throw new Error(error);
       return data;
     },
+    // ✅ Refetch a cada 60 segundos para manter dados atualizados
+    refetchInterval: 60 * 1000, // 60s
+    // ✅ Apenas refetch se a janela estiver em foco
+    refetchIntervalInBackground: false,
   });
 }
 
@@ -60,6 +64,10 @@ export function useContentBySection(section: string) {
       return data;
     },
     enabled: !!section,
+    // ✅ Refetch a cada 60 segundos para manter dados atualizados
+    refetchInterval: 60 * 1000, // 60s
+    // ✅ Apenas refetch se a janela estiver em foco
+    refetchIntervalInBackground: false,
   });
 }
 

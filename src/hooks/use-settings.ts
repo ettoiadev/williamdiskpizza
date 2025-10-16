@@ -33,6 +33,9 @@ export function useSettings() {
       if (error) throw new Error(error);
       return data;
     },
+    // ✅ Refetch a cada 60 segundos para manter dados atualizados
+    refetchInterval: 60 * 1000, // 60s
+    refetchIntervalInBackground: false,
   });
 }
 
