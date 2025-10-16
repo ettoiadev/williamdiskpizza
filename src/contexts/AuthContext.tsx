@@ -7,7 +7,7 @@
  * @module contexts/AuthContext
  */
 
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, useRef, ReactNode } from 'react';
 import type { User, Session } from '@supabase/supabase-js';
 import { supabase } from '@/lib/supabase';
 import { authService } from '@/services/auth-service';
@@ -63,24 +63,46 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const [session, setSession] = useState<Session | null>(null);
   const [adminUser, setAdminUser] = useState<AdminUser | null>(null);
   const [loading, setLoading] = useState(true);
+  
+  // ✅ Flag para prevenir múltiplas chamadas simultâneas
+  const loadingAdminRef = useRef(false);
 
   /**
-   * Carregar dados do admin user
+   * Carregar dados do admin user com timeout e proteção contra chamadas duplicadas
    */
   const loadAdminUser = async (userId: string) => {
+    // ✅ Prevenir múltiplas chamadas simultâneas
+    if (loadingAdminRef.current) {
+      console.log('[AuthContext] Já carregando admin user, pulando...');
+      return;
+    }
+    
     try {
-      const data = await authService.getAdminUser(userId);
+      loadingAdminRef.current = true;
+      console.log('[AuthContext] Carregando admin user:', userId);
+      
+      // ✅ Timeout de 3 segundos (reduzido para mais rapidez)
+      const timeoutPromise = new Promise((_, reject) => 
+        setTimeout(() => reject(new Error('Timeout ao carregar admin user')), 3000)
+      );
+      
+      const dataPromise = authService.getAdminUser(userId);
+      
+      const data = await Promise.race([dataPromise, timeoutPromise]) as any;
+      
       if (data) {
+        console.log('[AuthContext] Admin user carregado:', data.role);
         setAdminUser(data);
       } else {
-        console.error('Usuário não encontrado na tabela admin_users');
-        // Não fazer logout, apenas mostrar que não é admin
+        console.warn('[AuthContext] Usuário não encontrado na tabela admin_users');
         setAdminUser(null);
       }
     } catch (error) {
-      console.error('Erro ao carregar dados do admin user:', error);
-      // Não fazer logout em caso de erro, apenas deixar adminUser como null
+      console.error('[AuthContext] Erro ao carregar admin user:', error);
+      // ✅ Definir como null em caso de erro para não bloquear
       setAdminUser(null);
+    } finally {
+      loadingAdminRef.current = false;
     }
   };
 
@@ -99,28 +121,46 @@ export function AuthProvider({ children }: AuthProviderProps) {
   useEffect(() => {
     let mounted = true;
 
+    // ✅ Garantia absoluta: forçar loading=false após 10 segundos
+    const emergencyTimeout = setTimeout(() => {
+      if (mounted) {
+        console.warn('[AuthContext] TIMEOUT EMERGENCIAL - forçando loading=false');
+        setLoading(false);
+      }
+    }, 10000);
+
     // Função async para inicializar autenticação
     const initAuth = async () => {
       try {
+        console.log('[AuthContext] Inicializando autenticação...');
         const { data: { session } } = await supabase.auth.getSession();
         
-        if (!mounted) return;
+        if (!mounted) {
+          console.log('[AuthContext] Componente desmontado, abortando');
+          return;
+        }
         
         setSession(session);
         setUser(session?.user ?? null);
         
         if (session?.user) {
-          // ✅ AGUARDAR o carregamento do admin user antes de definir loading=false
+          console.log('[AuthContext] Sessão encontrada, carregando admin user...');
+          // ✅ AGUARDAR o carregamento do admin user (com timeout de 3s)
           await loadAdminUser(session.user.id);
+        } else {
+          console.log('[AuthContext] Sem sessão ativa');
         }
         
         if (mounted) {
+          console.log('[AuthContext] Autenticação inicializada');
           setLoading(false);
+          clearTimeout(emergencyTimeout); // ✅ Cancelar timeout de emergência
         }
       } catch (error) {
-        console.error('[AuthContext] Error initializing auth:', error);
+        console.error('[AuthContext] Erro ao inicializar auth:', error);
         if (mounted) {
           setLoading(false);
+          clearTimeout(emergencyTimeout); // ✅ Cancelar timeout de emergência
         }
       }
     };
@@ -130,15 +170,19 @@ export function AuthProvider({ children }: AuthProviderProps) {
     // Escutar mudanças na autenticação
     const {
       data: { subscription },
-    } = supabase.auth.onAuthStateChange(async (_event, session) => {
+    } = supabase.auth.onAuthStateChange(async (event, session) => {
       if (!mounted) return;
+      
+      console.log('[AuthContext] Auth state changed:', event);
       
       setSession(session);
       setUser(session?.user ?? null);
       
       if (session?.user) {
-        // ✅ AGUARDAR o carregamento do admin user
-        await loadAdminUser(session.user.id);
+        // ✅ NÃO bloquear aqui - carregar async sem await
+        loadAdminUser(session.user.id).catch(err => {
+          console.error('[AuthContext] Erro ao carregar admin user:', err);
+        });
       } else {
         setAdminUser(null);
       }
@@ -146,6 +190,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
     return () => {
       mounted = false;
+      clearTimeout(emergencyTimeout); // ✅ Limpar timeout ao desmontar
       subscription.unsubscribe();
     };
   }, []);
