@@ -6,6 +6,7 @@ const Footer = () => {
   const { data: aboutData } = useContentBySection('about');
   const { data: contactData } = useContentBySection('contact');
   const { data: businessHoursData } = useContentBySection('business_hours');
+  const { data: socialLinksData } = useContentBySection('social_links');
   
   // Função helper para pegar valor do conteúdo
   const getContent = (data: any[] | undefined, key: string, fallback: any = '') => {
@@ -27,12 +28,26 @@ const Footer = () => {
               {getContent(aboutData, 'subtitle', 'Há 35 anos servindo as melhores pizzas da região com ingredientes frescos e receitas tradicionais.')}
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-gray-300 hover:text-primary transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
+              {getContent(socialLinksData, 'instagram', '') && (
+                <a 
+                  href={getContent(socialLinksData, 'instagram', '#')} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
+                </a>
+              )}
+              {getContent(socialLinksData, 'facebook', '') && (
+                <a 
+                  href={getContent(socialLinksData, 'facebook', '#')} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="text-gray-300 hover:text-primary transition-colors"
+                >
+                  <Facebook className="h-5 w-5" />
+                </a>
+              )}
             </div>
           </div>
 
@@ -67,7 +82,14 @@ const Footer = () => {
               <a href="/sobre" className="block text-sm text-gray-300 hover:text-white transition-colors">
                 Quem Somos
               </a>
-              <a href="https://cardapiodigital.williamdiskpizza.com.br" target="_blank" rel="noopener noreferrer" className="block text-sm text-gray-300 hover:text-white transition-colors">Menu</a>
+              <a 
+                href={getContent(socialLinksData, 'menu_url', 'https://cardapiodigital.williamdiskpizza.com.br')} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="block text-sm text-gray-300 hover:text-white transition-colors"
+              >
+                Menu
+              </a>
               <a href="/contato" className="block text-sm text-gray-300 hover:text-white transition-colors">
                 Contato
               </a>
