@@ -1,5 +1,19 @@
 import { Pizza, Phone, MapPin, Clock, Instagram, Facebook } from 'lucide-react';
+import { useContentBySection } from '@/hooks/use-content';
+
 const Footer = () => {
+  // Buscar dados dinâmicos
+  const { data: aboutData } = useContentBySection('about');
+  const { data: contactData } = useContentBySection('contact');
+  const { data: businessHoursData } = useContentBySection('business_hours');
+  
+  // Função helper para pegar valor do conteúdo
+  const getContent = (data: any[] | undefined, key: string, fallback: any = '') => {
+    if (!data) return fallback;
+    const item = data.find(i => i.key === key);
+    return item?.value ?? fallback;
+  };
+
   return <footer className="bg-gray-900 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -9,7 +23,9 @@ const Footer = () => {
               <Pizza className="h-8 w-8 text-primary" />
               <span className="font-bold text-xl">William Disk Pizza</span>
             </div>
-            <p className="text-gray-300 text-sm">Há 35 anos servindo as melhores pizzas da região com ingredientes frescos e receitas tradicionais.</p>
+            <p className="text-gray-300 text-sm">
+              {getContent(aboutData, 'subtitle', 'Há 35 anos servindo as melhores pizzas da região com ingredientes frescos e receitas tradicionais.')}
+            </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-300 hover:text-primary transition-colors">
                 <Instagram className="h-5 w-5" />
@@ -26,15 +42,17 @@ const Footer = () => {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-primary" />
-                <span className="text-sm">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp) </span>
+                <span className="text-sm">
+                  {getContent(contactData, 'phone_primary', '(12) 3951-7565')} / {getContent(contactData, 'phone_secondary', '3961-3004')} / {getContent(contactData, 'whatsapp', '996367326')} (WhatsApp)
+                </span>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-primary" />
-                <span className="text-sm">R. Bernardino de Campos, 143 - Jacareí SP</span>
+                <span className="text-sm">{getContent(contactData, 'address', 'R. Bernardino de Campos, 143 - Jacareí SP')}</span>
               </div>
               <div className="flex items-center space-x-3">
                 <Clock className="h-4 w-4 text-primary" />
-                <span className="text-sm">Ter-Dom: 18h às 23h</span>
+                <span className="text-sm">{getContent(businessHoursData, 'days', 'Ter-Dom')}: {getContent(businessHoursData, 'hours', '18h às 23h')}</span>
               </div>
             </div>
           </div>

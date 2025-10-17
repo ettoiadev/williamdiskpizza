@@ -9,8 +9,19 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Phone, MapPin, Clock, Mail, MessageSquare, Instagram, Facebook } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
+import { useContentBySection } from '@/hooks/use-content';
 
 const Contact = () => {
+  // Buscar dados dinâmicos
+  const { data: contactData } = useContentBySection('contact');
+  const { data: businessHoursData } = useContentBySection('business_hours');
+  
+  // Função helper para pegar valor do conteúdo
+  const getContent = (data: any[] | undefined, key: string, fallback: any = '') => {
+    if (!data) return fallback;
+    const item = data.find(i => i.key === key);
+    return item?.value ?? fallback;
+  };
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -81,9 +92,11 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Telefone</h3>
-                        <p className="text-gray-600 mb-1">(12) 3951-7565 / 3961-3004 / 996367326 (WhatsApp)</p>
+                        <p className="text-gray-600 mb-1">
+                          {getContent(contactData, 'phone_primary', '(12) 3951-7565')} / {getContent(contactData, 'phone_secondary', '3961-3004')} / {getContent(contactData, 'whatsapp', '996367326')} (WhatsApp)
+                        </p>
                         <p className="text-sm text-gray-500">
-                          Pedidos e informações - Ter-Dom, 18h às 23h
+                          Pedidos e informações - {getContent(businessHoursData, 'days', 'Ter-Dom')}, {getContent(businessHoursData, 'hours', '18h às 23h')}
                         </p>
                       </div>
                     </div>
@@ -98,7 +111,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Endereço</h3>
-                        <p className="text-gray-600 mb-1">R. Bernardino de Campos, 143 - Jacareí SP</p>
+                        <p className="text-gray-600 mb-1">{getContent(contactData, 'address', 'R. Bernardino de Campos, 143 - Jacareí SP')}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -112,8 +125,8 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Horário de Funcionamento</h3>
-                        <p className="text-gray-600 mb-1">Terça a Domingo</p>
-                        <p className="text-gray-600 font-medium">18:00 às 23:00</p>
+                        <p className="text-gray-600 mb-1">{getContent(businessHoursData, 'days', 'Terça a Domingo')}</p>
+                        <p className="text-gray-600 font-medium">{getContent(businessHoursData, 'hours', '18:00 às 23:00')}</p>
                       </div>
                     </div>
                   </CardContent>
@@ -127,7 +140,7 @@ const Contact = () => {
                       </div>
                       <div>
                         <h3 className="font-semibold text-lg mb-2">Email</h3>
-                        <p className="text-gray-600 mb-2">contato@williamdiskpizza.com.br</p>
+                        <p className="text-gray-600 mb-2">{getContent(contactData, 'email', 'contato@williamdiskpizza.com.br')}</p>
                         <div className="flex space-x-4">
                           <a href="#" className="text-primary hover:text-primary/80 transition-colors">
                             <Instagram className="h-5 w-5" />

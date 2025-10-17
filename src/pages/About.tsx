@@ -2,8 +2,18 @@ import { Card, CardContent } from '@/components/ui/card';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Pizza, Users, Heart, Award, Clock, Utensils } from 'lucide-react';
+import { useContentBySection } from '@/hooks/use-content';
 
 const About = () => {
+  // Buscar dados dinâmicos da seção 'about'
+  const { data: aboutData } = useContentBySection('about');
+  
+  // Função helper para pegar valor do conteúdo
+  const getContent = (data: any[] | undefined, key: string, fallback: any = '') => {
+    if (!data) return fallback;
+    const item = data.find(i => i.key === key);
+    return item?.value ?? fallback;
+  };
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -17,7 +27,7 @@ const About = () => {
               Conheça a <span className="pizza-text-gradient">William Disk Pizza</span>
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Uma história de paixão, tradição e muito sabor que começou há 35 anos
+              {getContent(aboutData, 'subtitle', 'Uma história de paixão, tradição e muito sabor que começou há 35 anos')}
             </p>
           </div>
         </div>
@@ -28,30 +38,9 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Nossa História</h2>
-              <div className="space-y-6 text-gray-700">
-                <p>
-                  Há 35 anos, nossa paixão por pizza começou em casa, em 1990, servindo vizinhos, amigos e familiares.
-                </p>
-                
-                <p>
-                  Com o boca a boca, surgiram nossos primeiros clientes, que passaram a nos chamar de <strong>William Disk Pizza</strong>. Assim, conquistamos uma clientela fiel, que nos acompanha até hoje.
-                </p>
-                
-                <p>
-                  Crescemos, informatizamos nosso serviço em 1992 e mudamos para espaços maiores, sempre mantendo a qualidade e o carinho no atendimento.
-                </p>
-                
-                <p>
-                  Hoje, atendemos somente delivery em nosso endereço na Rua Bernardino de Campos, 143 – Centro. Você pode receber sua pizza quentinha em casa ou retirar no balcão.
-                </p>
-                
-                <p>
-                  Aceitamos cartões e temos promoções todos os dias.
-                </p>
-                <p>
-                  Bem-vindos à tradição e sabor da <strong>William Disk Pizza</strong>!
-                </p>
+              <h2 className="text-3xl font-bold mb-6">{getContent(aboutData, 'title', 'Nossa História')}</h2>
+              <div className="space-y-6 text-gray-700" style={{ whiteSpace: 'pre-line' }}>
+                {getContent(aboutData, 'history', 'Há 35 anos, nossa paixão por pizza começou em casa, em 1990, servindo vizinhos, amigos e familiares.\n\nCom o boca a boca, surgiram nossos primeiros clientes, que passaram a nos chamar de William Disk Pizza. Assim, conquistamos uma clientela fiel, que nos acompanha até hoje.\n\nCrescemos, informatizamos nosso serviço em 1992 e mudamos para espaços maiores, sempre mantendo a qualidade e o carinho no atendimento.\n\nHoje, atendemos somente delivery em nosso endereço na Rua Bernardino de Campos, 143 – Centro. Você pode receber sua pizza quentinha em casa ou retirar no balcão.\n\nAceitamos cartões e temos promoções todos os dias.\n\nBem-vindos à tradição e sabor da William Disk Pizza!')}
               </div>
             </div>
             <div className="flex justify-center">
@@ -169,9 +158,7 @@ const About = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-8">Nossa Missão</h2>
           <p className="text-xl max-w-4xl mx-auto leading-relaxed opacity-90">
-            "Proporcionar momentos únicos através do sabor autêntico das nossas pizzas, 
-            mantendo viva a tradição familiar e criando memórias afetivas em cada entrega. 
-            Queremos estar presente nos melhores momentos da vida dos nossos clientes."
+            "{getContent(aboutData, 'mission', 'Proporcionar momentos únicos através do sabor autêntico das nossas pizzas, mantendo viva a tradição familiar e criando memórias afetivas em cada entrega. Queremos estar presente nos melhores momentos da vida dos nossos clientes.')}"
           </p>
         </div>
       </section>

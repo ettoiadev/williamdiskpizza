@@ -104,10 +104,11 @@ const Index = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Entrega Rápida</h3>
+                <h3 className="text-xl font-semibold mb-3">
+                  {getContent(featuresData, 'feature1_title', 'Entrega Rápida')}
+                </h3>
                 <p className="text-gray-600">
-                  Delivery em até 30 minutos para toda a região. Sua pizza quentinha 
-                  direto no seu endereço!
+                  {getContent(featuresData, 'feature1_description', 'Delivery em até 30 minutos para toda a região. Sua pizza quentinha direto no seu endereço!')}
                 </p>
               </CardContent>
             </Card>
@@ -117,10 +118,11 @@ const Index = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Heart className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Ingredientes Frescos</h3>
+                <h3 className="text-xl font-semibold mb-3">
+                  {getContent(featuresData, 'feature2_title', 'Ingredientes Frescos')}
+                </h3>
                 <p className="text-gray-600">
-                  Selecionamos os melhores ingredientes diariamente. Qualidade 
-                  que você pode sentir em cada mordida.
+                  {getContent(featuresData, 'feature2_description', 'Selecionamos os melhores ingredientes diariamente. Qualidade que você pode sentir em cada mordida.')}
                 </p>
               </CardContent>
             </Card>
@@ -130,10 +132,11 @@ const Index = () => {
                 <div className="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Award className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3">Tradição Familiar</h3>
+                <h3 className="text-xl font-semibold mb-3">
+                  {getContent(featuresData, 'feature3_title', 'Tradição Familiar')}
+                </h3>
                 <p className="text-gray-600">
-                  35 anos servindo pizzas com receitas especiais da família. 
-                  Tradição e sabor únicos!
+                  {getContent(featuresData, 'feature3_description', '35 anos servindo pizzas com receitas especiais da família. Tradição e sabor únicos!')}
                 </p>
               </CardContent>
             </Card>
