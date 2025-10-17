@@ -65,10 +65,10 @@ export interface BusinessHours {
  */
 export interface AboutContent {
   title: string;
-  history: string;
+  subtitle: string;
+  description: string; // HTML do editor rico
   mission: string;
-  vision: string;
-  values: string[];
+  image_url?: string;
 }
 
 /**

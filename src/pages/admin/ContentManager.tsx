@@ -452,6 +452,20 @@ export default function ContentManager() {
                 </div>
                 
                 <div>
+                  <Label htmlFor="about-subtitle">Subtítulo</Label>
+                  <Textarea
+                    id="about-subtitle"
+                    value={formData.subtitle || ''}
+                    onChange={(e) => handleChange('subtitle', e.target.value)}
+                    placeholder="Uma história de paixão, tradição e muito sabor que começou há 35 anos"
+                    rows={2}
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Aparece no topo da página Sobre e no rodapé do site
+                  </p>
+                </div>
+                
+                <div>
                   <Label>Descrição</Label>
                   <div className="mt-2">
                     <RichTextEditor
@@ -486,6 +500,20 @@ export default function ContentManager() {
                       }}
                     />
                   </div>
+                </div>
+                
+                <div>
+                  <Label htmlFor="about-mission">Missão</Label>
+                  <Textarea
+                    id="about-mission"
+                    value={formData.mission || ''}
+                    onChange={(e) => handleChange('mission', e.target.value)}
+                    placeholder="Proporcionar momentos únicos através do sabor autêntico das nossas pizzas..."
+                    rows={4}
+                  />
+                  <p className="text-xs text-gray-500 mt-1">
+                    Aparece na seção "Nossa Missão" da página Sobre
+                  </p>
                 </div>
               </CardContent>
             </Card>

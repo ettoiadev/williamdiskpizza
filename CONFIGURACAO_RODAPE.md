@@ -1,6 +1,6 @@
-# 📄 Configuração do Rodapé (Footer)
+# 📄 Configuração do Rodapé e Página Sobre
 
-Este documento explica como configurar todas as informações exibidas no rodapé do site através do painel administrativo.
+Este documento explica como configurar todas as informações exibidas no rodapé e na página "Quem Somos" do site através do painel administrativo.
 
 ## 🎯 Onde Configurar
 
@@ -166,6 +166,55 @@ Basta salvar e recarregar a página do site! 🚀
 
 ---
 
+## 📖 Página "Quem Somos" (Sobre)
+
+A página "Quem Somos" também é totalmente configurável através da aba **"Sobre"** no Gerenciar Conteúdo.
+
+### Campos Disponíveis:
+
+#### **Título**
+- **O que aparece:** Título da seção de história (ex: "Nossa História")
+- **Localização:** Aba "Sobre" → Campo "Título"
+
+#### **Subtítulo**
+- **O que aparece:** 
+  - Texto abaixo do título principal "Conheça a William Disk Pizza"
+  - Também aparece no rodapé do site
+- **Localização:** Aba "Sobre" → Campo "Subtítulo"
+- **Exemplo:** "Uma história de paixão, tradição e muito sabor que começou há 35 anos"
+
+#### **Descrição** (Editor Rico)
+- **O que aparece:** História completa da pizzaria na página Sobre
+- **Localização:** Aba "Sobre" → Campo "Descrição"
+- **Recursos:**
+  - Editor de texto rico com formatação
+  - Negrito, itálico, listas
+  - Múltiplos parágrafos
+  - Links
+- **Exemplo:** "Desde 1990, a William Disk Pizza tem sido sinônimo de qualidade e tradição em Jacareí..."
+
+#### **URL da Imagem**
+- **O que aparece:** Imagem ilustrativa na página Sobre (opcional)
+- **Localização:** Aba "Sobre" → Campo "URL da Imagem"
+- **Como usar:**
+  1. Clique em "Enviar imagem" para fazer upload
+  2. Ou cole uma URL direta de imagem
+
+#### **Missão**
+- **O que aparece:** Texto na seção "Nossa Missão" (fundo vermelho) na página Sobre
+- **Localização:** Aba "Sobre" → Campo "Missão"
+- **Exemplo:** "Proporcionar momentos únicos através do sabor autêntico das nossas pizzas, mantendo viva a tradição familiar..."
+
+### 🎨 Dica de Formatação
+
+No campo **Descrição**, você pode usar o editor rico para:
+- **Negrito:** Destacar palavras importantes
+- **Listas:** Organizar informações em tópicos
+- **Parágrafos:** Separar ideias (pressione Enter duas vezes)
+- **Links:** Adicionar links para redes sociais ou cardápio
+
+---
+
 ## 📞 Suporte
 
-Se tiver dúvidas sobre como configurar o rodapé, entre em contato com o suporte técnico.
+Se tiver dúvidas sobre como configurar o rodapé ou a página Sobre, entre em contato com o suporte técnico.

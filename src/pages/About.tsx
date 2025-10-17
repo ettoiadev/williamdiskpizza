@@ -39,9 +39,12 @@ const About = () => {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold mb-6">{getContent(aboutData, 'title', 'Nossa História')}</h2>
-              <div className="space-y-6 text-gray-700" style={{ whiteSpace: 'pre-line' }}>
-                {getContent(aboutData, 'history', 'Há 35 anos, nossa paixão por pizza começou em casa, em 1990, servindo vizinhos, amigos e familiares.\n\nCom o boca a boca, surgiram nossos primeiros clientes, que passaram a nos chamar de William Disk Pizza. Assim, conquistamos uma clientela fiel, que nos acompanha até hoje.\n\nCrescemos, informatizamos nosso serviço em 1992 e mudamos para espaços maiores, sempre mantendo a qualidade e o carinho no atendimento.\n\nHoje, atendemos somente delivery em nosso endereço na Rua Bernardino de Campos, 143 – Centro. Você pode receber sua pizza quentinha em casa ou retirar no balcão.\n\nAceitamos cartões e temos promoções todos os dias.\n\nBem-vindos à tradição e sabor da William Disk Pizza!')}
-              </div>
+              <div 
+                className="prose prose-gray max-w-none text-gray-700"
+                dangerouslySetInnerHTML={{ 
+                  __html: getContent(aboutData, 'description', '<p>Há 35 anos, nossa paixão por pizza começou em casa, em 1990, servindo vizinhos, amigos e familiares.</p><p>Com o boca a boca, surgiram nossos primeiros clientes, que passaram a nos chamar de William Disk Pizza. Assim, conquistamos uma clientela fiel, que nos acompanha até hoje.</p><p>Crescemos, informatizamos nosso serviço em 1992 e mudamos para espaços maiores, sempre mantendo a qualidade e o carinho no atendimento.</p><p>Hoje, atendemos somente delivery em nosso endereço na Rua Bernardino de Campos, 143 – Centro. Você pode receber sua pizza quentinha em casa ou retirar no balcão.</p><p>Aceitamos cartões e temos promoções todos os dias.</p><p>Bem-vindos à tradição e sabor da William Disk Pizza!</p>') 
+                }}
+              />
             </div>
             <div className="flex justify-center">
               <div className="w-80 h-80 bg-gradient-to-br from-primary/20 to-primary/10 rounded-full flex items-center justify-center">
