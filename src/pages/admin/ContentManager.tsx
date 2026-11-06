@@ -595,7 +595,7 @@ export default function ContentManager() {
                     id="promo-text"
                     value={formData.text || ''}
                     onChange={(e) => handleChange('text', e.target.value)}
-                    placeholder="🍕 Promoção especial! 2 pizzas grandes por R$ 89,90"
+                    placeholder="Escreva aqui sua promoção"
                   />
                 </div>
 
