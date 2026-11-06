@@ -212,7 +212,7 @@ src/
 ### Admin CMS
 - **URL:** `http://localhost:5173/admin/login`
 - **Email:** `admin@admin.com`
-- **Senha:** `123456`
+- **Senha:** `***REMOVIDO***`
 - **Role:** admin (acesso total)
 
 ---

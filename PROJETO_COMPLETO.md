@@ -184,7 +184,7 @@ src/
 ### **1. Admin - Editar Conteúdo:**
 ```
 1. Acesse: http://localhost:5173/admin/login
-2. Login: admin@admin.com / 123456
+2. Login: admin@admin.com / ***REMOVIDO***
 3. Clique em "Editar Conteúdo"
 4. Escolha a seção (tabs)
 5. Edite os campos
@@ -384,7 +384,7 @@ src/
 ```
 URL: http://localhost:5173/admin/login
 Email: admin@admin.com
-Senha: 123456
+Senha: ***REMOVIDO***
 Role: admin
 ```
 

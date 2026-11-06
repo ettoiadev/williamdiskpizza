@@ -78,11 +78,11 @@ Todos os buckets foram criados com políticas:
 ```env
 # ANTES (cardapiov3)
 VITE_SUPABASE_URL=https://nsgwhuplpbftcicmeaus.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_ANON_KEY=<ANON_KEY_REMOVIDA>
 
 # DEPOIS (sitewilliam)
 VITE_SUPABASE_URL=https://lteokgdvxnnpbyiykezt.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+VITE_SUPABASE_ANON_KEY=<ANON_KEY_REMOVIDA>
 ```
 
 ### Arquivo `.env.example` Atualizado ✅
@@ -139,7 +139,7 @@ No dashboard da Vercel, atualize as variáveis de ambiente:
 
 ```
 VITE_SUPABASE_URL=https://lteokgdvxnnpbyiykezt.supabase.co
-VITE_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0ZW9rZ2R2eG5ucGJ5aXlrZXp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDY0MTIsImV4cCI6MjA3NjE4MjQxMn0.1SH_rr-2UJ3okGev7i94gHUkF24t_jrmh5b9tCsjNjM
+VITE_SUPABASE_ANON_KEY=<ANON_KEY_REMOVIDA>
 ```
 
 ### 4. **Fazer Deploy**

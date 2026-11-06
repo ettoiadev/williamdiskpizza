@@ -5,11 +5,13 @@
  * ou use com Node.js instalando as dependências necessárias.
  */
 
-const SUPABASE_URL = 'https://lteokgdvxnnpbyiykezt.supabase.co';
-const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0ZW9rZ2R2eG5ucGJ5aXlrZXp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDY0MTIsImV4cCI6MjA3NjE4MjQxMn0.1SH_rr-2UJ3okGev7i94gHUkF24t_jrmh5b9tCsjNjM';
+// ⚠️ Preencha com os valores do seu projeto antes de executar.
+// NÃO faça commit deste arquivo com credenciais reais.
+const SUPABASE_URL = process.env.VITE_SUPABASE_URL || 'https://SEU_PROJETO.supabase.co';
+const SUPABASE_ANON_KEY = process.env.VITE_SUPABASE_ANON_KEY || 'SUA_ANON_KEY_AQUI';
 
-const ADMIN_EMAIL = 'admin@admin.com';
-const ADMIN_PASSWORD = '123456';
+const ADMIN_EMAIL = process.env.ADMIN_EMAIL || 'admin@exemplo.com';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'DEFINA_UMA_SENHA_FORTE';
 
 /**
  * Cria usuário admin usando Supabase Auth

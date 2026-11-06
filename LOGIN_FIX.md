@@ -69,7 +69,7 @@ INSERT INTO auth.users (
   gen_random_uuid(),
   'authenticated', 'authenticated',
   'admin@admin.com',
-  extensions.crypt('123456', extensions.gen_salt('bf')),
+  extensions.crypt('***REMOVIDO***', extensions.gen_salt('bf')),
   NOW(), NULL, '', NULL, '', NULL, '', '', NULL, NULL,
   '{"provider":"email","providers":["email"]}'::jsonb,
   '{}'::jsonb,
@@ -82,8 +82,8 @@ INSERT INTO auth.users (
 | Campo | Valor |
 |-------|-------|
 | **Email** | `admin@admin.com` |
-| **Senha** | `123456` |
-| **User ID** | `9d189f35-002c-4fc8-904e-aded2ea90e3e` |
+| **Senha** | `***REMOVIDO***` |
+| **User ID** | `<USER_ID_REMOVIDO>` |
 | **Status** | ✅ Ativo e funcional |
 
 ## Como Testar

@@ -191,19 +191,6 @@ export default function Login() {
                 )}
               </Button>
             </form>
-
-            {/* Dica para desenvolvimento */}
-            {import.meta.env.DEV && (
-              <div className="mt-6 p-4 bg-blue-50 rounded-md border border-blue-200">
-                <p className="text-xs text-blue-800 font-semibold mb-2">
-                  🔧 Credenciais de Teste (DEV)
-                </p>
-                <p className="text-xs text-blue-600 font-mono">
-                  Email: admin@admin.com<br />
-                  Senha: 123456
-                </p>
-              </div>
-            )}
           </CardContent>
         </Card>
 

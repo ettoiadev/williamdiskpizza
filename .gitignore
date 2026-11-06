@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Variaveis de ambiente locais (contem segredos) - NAO versionar
+.env
+.env.local
+.env.*.local

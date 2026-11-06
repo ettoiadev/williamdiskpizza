@@ -37,7 +37,7 @@ import { authService } from '@/services/auth-service';
 // Login
 const { user, error } = await authService.signIn({
   email: 'admin@admin.com',
-  password: '123456'
+  password: '***REMOVIDO***'
 });
 
 // Logout
@@ -330,7 +330,7 @@ http://localhost:5173/admin/login
 
 # Credenciais
 Email: admin@admin.com
-Senha: 123456
+Senha: ***REMOVIDO***
 ```
 
 ### 2. Testar Proteção de Rota

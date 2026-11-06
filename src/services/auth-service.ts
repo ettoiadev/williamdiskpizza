@@ -44,8 +44,8 @@ interface SignUpCredentials extends LoginCredentials {
  * 
  * // Login
  * const { user, error } = await authService.signIn({
- *   email: 'admin@admin.com',
- *   password: '123456'
+ *   email: 'seu-email@exemplo.com',
+ *   password: 'sua-senha'
  * });
  * ```
  */

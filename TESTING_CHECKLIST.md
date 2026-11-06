@@ -20,7 +20,7 @@ Validar todas as funcionalidades do sistema antes do deploy em produção.
 - [ ] Acessar `/admin/login`
 - [ ] Tentar login com credenciais corretas
   - Email: `admin@admin.com`
-  - Senha: `123456`
+  - Senha: `***REMOVIDO***`
   - ✓ Deve redirecionar para `/admin/dashboard`
   - ✓ Deve mostrar toast de sucesso
 - [ ] Tentar login com email incorreto

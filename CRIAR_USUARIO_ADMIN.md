@@ -22,7 +22,7 @@ O Supabase Auth não permite criação de usuários diretamente via SQL por ques
    - Escolha **"Create new user"**
    - Preencha:
      - **Email:** `admin@admin.com`
-     - **Password:** `123456`
+     - **Password:** `***REMOVIDO***`
      - **Auto Confirm User:** ✅ Marque esta opção
      - **User Metadata:** (opcional)
 
@@ -51,13 +51,13 @@ import { createClient } from '@supabase/supabase-js'
 
 const supabase = createClient(
   'https://lteokgdvxnnpbyiykezt.supabase.co',
-  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx0ZW9rZ2R2eG5ucGJ5aXlrZXp0Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjA2MDY0MTIsImV4cCI6MjA3NjE4MjQxMn0.1SH_rr-2UJ3okGev7i94gHUkF24t_jrmh5b9tCsjNjM'
+  '<ANON_KEY_REMOVIDA>'
 )
 
 async function createAdminUser() {
   const { data, error } = await supabase.auth.signUp({
     email: 'admin@admin.com',
-    password: '123456',
+    password: '***REMOVIDO***',
     options: {
       data: {
         role: 'admin'
@@ -101,7 +101,7 @@ createAdminUser()
 1. Acesse: `http://localhost:8080/admin`
 2. Faça login com:
    - **Email:** `admin@admin.com`
-   - **Senha:** `123456`
+   - **Senha:** `***REMOVIDO***`
 3. Você deve ser redirecionado para o dashboard
 
 ### Verificar no Banco:
@@ -120,7 +120,7 @@ UUID | admin@admin.com | admin | TIMESTAMP | NULL
 
 ## 🔒 Segurança
 
-- ✅ **Senha temporária:** `123456` - altere após primeiro login
+- ✅ **Senha temporária:** `***REMOVIDO***` - altere após primeiro login
 - ✅ **Confirmação automática:** Usuário já confirmado
 - ✅ **Role admin:** Acesso total ao painel administrativo
 - ✅ **UUID único:** Cada usuário tem identificador único

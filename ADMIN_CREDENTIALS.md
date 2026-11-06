@@ -11,9 +11,9 @@
 | Campo | Valor |
 |-------|-------|
 | **Email** | `admin@admin.com` |
-| **Senha** | `123456` |
+| **Senha** | `***REMOVIDO***` |
 | **Role** | `admin` (acesso total) |
-| **User ID** | `9d189f35-002c-4fc8-904e-aded2ea90e3e` |
+| **User ID** | `<USER_ID_REMOVIDO>` |
 
 ---
 
@@ -67,7 +67,7 @@ Como **admin**, você tem acesso total a:
 ```
 URL: https://williamdiskpizza.com.br/admin/login
 Email: admin@admin.com
-Senha: 123456
+Senha: ***REMOVIDO***
 ```
 
 ### Opção 2: Supabase Dashboard

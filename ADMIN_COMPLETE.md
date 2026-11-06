@@ -311,7 +311,7 @@ src/
 ```
 URL: http://localhost:8080/admin/login
 Email: admin@admin.com
-Senha: 123456
+Senha: ***REMOVIDO***
 ```
 
 ### 2. Navegação

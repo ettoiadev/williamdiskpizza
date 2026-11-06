@@ -5,8 +5,8 @@
 Ao fazer login, a página abria e fechava rapidamente, com os seguintes erros no console:
 
 ```
-GET https://nsgwhuplpbftcicmeaus.supabase.co/rest/v1/admin_users?select=id&id=eq.9d189f35-002c-4fc8-904e-aded2ea90e3e 500 (Internal Server Error)
-GET https://nsgwhuplpbftcicmeaus.supabase.co/rest/v1/admin_users?select=*&id=eq.9d189f35-002c-4fc8-904e-aded2ea90e3e 500 (Internal Server Error)
+GET https://nsgwhuplpbftcicmeaus.supabase.co/rest/v1/admin_users?select=id&id=eq.<USER_ID_REMOVIDO> 500 (Internal Server Error)
+GET https://nsgwhuplpbftcicmeaus.supabase.co/rest/v1/admin_users?select=*&id=eq.<USER_ID_REMOVIDO> 500 (Internal Server Error)
 ```
 
 ### Causa Raiz
@@ -158,7 +158,7 @@ SELECT * FROM public.admin_users WHERE id = auth.uid();
 1. Acesse: `http://localhost:8080/admin/login`
 2. Use as credenciais:
    - **Email**: `admin@admin.com`
-   - **Senha**: `123456`
+   - **Senha**: `***REMOVIDO***`
 3. ✅ Login deve funcionar
 4. ✅ Dashboard deve carregar normalmente
 5. ✅ Nenhum erro 500 no console
