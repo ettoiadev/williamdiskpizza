@@ -80,9 +80,10 @@ export default function ContentManager() {
       // ✅ Filtrar e validar entradas
       const updates = Object.entries(formData)
         .filter(([_, value]) => {
-          // Remover valores nulos, undefined ou strings vazias
+          // Remover apenas valores nulos ou undefined.
+          // Strings vazias SÃO permitidas, para que o usuário consiga
+          // limpar/apagar o conteúdo de um campo e salvar essa alteração.
           if (value === null || value === undefined) return false;
-          if (typeof value === 'string' && value.trim() === '') return false;
           return true;
         })
         .map(([key, value]) => {
