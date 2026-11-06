@@ -7,17 +7,21 @@
  * @module pages/admin/SettingsManager
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { AdminLayout } from '@/components/AdminLayout';
 import { useSettings, useUpsertManySettings } from '@/hooks/use-settings';
+import { useAuth } from '@/contexts/AuthContext';
+import { authService } from '@/services/auth-service';
+import { useToast } from '@/hooks/use-toast';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { ImageUpload } from '@/components/ImageUpload';
-import { Loader2, Save, Settings, Palette, Search } from 'lucide-react';
+import { Loader2, Save, Settings, Palette, Search, ShieldCheck, KeyRound, Eye, EyeOff, AlertCircle } from 'lucide-react';
 
 /**
  * SettingsManager - Gerenciador de configurações
@@ -99,7 +103,7 @@ export default function SettingsManager() {
 
         {/* Tabs */}
         <Tabs value={activeTab} onValueChange={setActiveTab}>
-          <TabsList className="grid w-full grid-cols-3">
+          <TabsList className="grid w-full grid-cols-4">
             <TabsTrigger value="general">
               <Settings className="mr-2 h-4 w-4" />
               Geral
@@ -111,6 +115,10 @@ export default function SettingsManager() {
             <TabsTrigger value="theme">
               <Palette className="mr-2 h-4 w-4" />
               Tema
+            </TabsTrigger>
+            <TabsTrigger value="security">
+              <ShieldCheck className="mr-2 h-4 w-4" />
+              Segurança
             </TabsTrigger>
           </TabsList>
 
@@ -429,30 +437,222 @@ export default function SettingsManager() {
               </CardContent>
             </Card>
           </TabsContent>
+
+          {/* Aba Segurança */}
+          <TabsContent value="security" className="space-y-4">
+            <ChangePasswordCard />
+          </TabsContent>
         </Tabs>
 
-        {/* Botão Salvar */}
-        <div className="flex justify-end">
-          <Button
-            onClick={handleSave}
-            disabled={updateMutation.isPending}
-            size="lg"
-            className="min-w-[200px]"
-          >
-            {updateMutation.isPending ? (
+        {/* Botão Salvar (não se aplica à aba Segurança, que tem o seu próprio) */}
+        {activeTab !== 'security' && (
+          <div className="flex justify-end">
+            <Button
+              onClick={handleSave}
+              disabled={updateMutation.isPending}
+              size="lg"
+              className="min-w-[200px]"
+            >
+              {updateMutation.isPending ? (
+                <>
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                  Salvando...
+                </>
+              ) : (
+                <>
+                  <Save className="mr-2 h-4 w-4" />
+                  Salvar Configurações
+                </>
+              )}
+            </Button>
+          </div>
+        )}
+      </div>
+    </AdminLayout>
+  );
+}
+
+/**
+ * ChangePasswordCard - Formulário para o usuário logado trocar a própria senha.
+ *
+ * Fluxo:
+ * 1. Valida os campos (preenchimento, tamanho mínimo, confirmação).
+ * 2. Confirma a senha atual re-autenticando via Supabase (signIn).
+ * 3. Atualiza para a nova senha (supabase.auth.updateUser).
+ */
+function ChangePasswordCard() {
+  const { user } = useAuth();
+  const { toast } = useToast();
+
+  const [currentPassword, setCurrentPassword] = useState('');
+  const [newPassword, setNewPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPasswords, setShowPasswords] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError(null);
+
+    // Validações
+    if (!currentPassword || !newPassword || !confirmPassword) {
+      setError('Preencha todos os campos.');
+      return;
+    }
+    if (newPassword.length < 8) {
+      setError('A nova senha deve ter pelo menos 8 caracteres.');
+      return;
+    }
+    if (newPassword !== confirmPassword) {
+      setError('A confirmação não corresponde à nova senha.');
+      return;
+    }
+    if (newPassword === currentPassword) {
+      setError('A nova senha deve ser diferente da senha atual.');
+      return;
+    }
+    if (!user?.email) {
+      setError('Não foi possível identificar o usuário logado. Faça login novamente.');
+      return;
+    }
+
+    setLoading(true);
+    try {
+      // 1. Confirmar a senha atual re-autenticando
+      const { error: signInError } = await authService.signIn({
+        email: user.email,
+        password: currentPassword,
+      });
+
+      if (signInError) {
+        setError('Senha atual incorreta.');
+        setLoading(false);
+        return;
+      }
+
+      // 2. Atualizar para a nova senha
+      const { error: updateError } = await authService.updatePassword(newPassword);
+
+      if (updateError) {
+        setError(updateError.message || 'Erro ao atualizar a senha. Tente novamente.');
+        setLoading(false);
+        return;
+      }
+
+      toast({
+        title: 'Senha alterada!',
+        description: 'Sua senha foi atualizada com sucesso.',
+      });
+
+      // Limpar formulário
+      setCurrentPassword('');
+      setNewPassword('');
+      setConfirmPassword('');
+    } catch (err) {
+      setError('Erro inesperado ao alterar a senha. Tente novamente.');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <Card>
+      <CardHeader>
+        <CardTitle className="flex items-center gap-2">
+          <KeyRound className="h-5 w-5" />
+          Alterar Senha
+        </CardTitle>
+        <CardDescription>
+          Troque a senha de acesso da sua conta ({user?.email}).
+        </CardDescription>
+      </CardHeader>
+      <CardContent>
+        {error && (
+          <Alert variant="destructive" className="mb-4">
+            <AlertCircle className="h-4 w-4" />
+            <AlertDescription>{error}</AlertDescription>
+          </Alert>
+        )}
+
+        <form onSubmit={handleSubmit} className="space-y-4 max-w-md">
+          {/* Senha atual */}
+          <div className="space-y-2">
+            <Label htmlFor="current-password">Senha atual</Label>
+            <Input
+              id="current-password"
+              type={showPasswords ? 'text' : 'password'}
+              value={currentPassword}
+              onChange={(e) => setCurrentPassword(e.target.value)}
+              disabled={loading}
+              autoComplete="current-password"
+              placeholder="••••••••"
+            />
+          </div>
+
+          {/* Nova senha */}
+          <div className="space-y-2">
+            <Label htmlFor="new-password">Nova senha</Label>
+            <Input
+              id="new-password"
+              type={showPasswords ? 'text' : 'password'}
+              value={newPassword}
+              onChange={(e) => setNewPassword(e.target.value)}
+              disabled={loading}
+              autoComplete="new-password"
+              placeholder="Mínimo de 8 caracteres"
+            />
+          </div>
+
+          {/* Confirmar nova senha */}
+          <div className="space-y-2">
+            <Label htmlFor="confirm-password">Confirmar nova senha</Label>
+            <Input
+              id="confirm-password"
+              type={showPasswords ? 'text' : 'password'}
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              disabled={loading}
+              autoComplete="new-password"
+              placeholder="Repita a nova senha"
+            />
+          </div>
+
+          {/* Mostrar/ocultar senhas */}
+          <div className="flex items-center gap-2">
+            <button
+              type="button"
+              onClick={() => setShowPasswords((v) => !v)}
+              className="text-sm text-primary hover:underline inline-flex items-center gap-1"
+              tabIndex={-1}
+            >
+              {showPasswords ? (
+                <>
+                  <EyeOff className="h-4 w-4" /> Ocultar senhas
+                </>
+              ) : (
+                <>
+                  <Eye className="h-4 w-4" /> Mostrar senhas
+                </>
+              )}
+            </button>
+          </div>
+
+          <Button type="submit" disabled={loading} className="min-w-[180px]">
+            {loading ? (
               <>
                 <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                Salvando...
+                Alterando...
               </>
             ) : (
               <>
-                <Save className="mr-2 h-4 w-4" />
-                Salvar Configurações
+                <ShieldCheck className="mr-2 h-4 w-4" />
+                Alterar Senha
               </>
             )}
           </Button>
-        </div>
-      </div>
-    </AdminLayout>
+        </form>
+      </CardContent>
+    </Card>
   );
 }
