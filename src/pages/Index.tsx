@@ -6,7 +6,6 @@ import Footer from '@/components/Footer';
 import Gallery from '@/components/Gallery';
 import Testimonials from '@/components/Testimonials';
 import FloatingWhatsApp from '@/components/FloatingWhatsApp';
-import PromoBanner from '@/components/PromoBanner';
 import { Pizza, Clock, Star, Phone, MapPin, Heart, Award, Users, Flame, Loader2 } from 'lucide-react';
 import { useContentBySection } from '@/hooks/use-content';
 
@@ -24,7 +23,6 @@ const Index = () => {
   };
   return (
     <div className="min-h-screen bg-background">
-      <PromoBanner />
       <Navbar />
       <FloatingWhatsApp />
       

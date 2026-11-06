@@ -7,7 +7,7 @@
  * @module pages/admin/ContentManager
  */
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { AdminLayout } from '@/components/AdminLayout';
 import { useContentBySection, useUpsertManyContent } from '@/hooks/use-content';
 import { Button } from '@/components/ui/button';
@@ -32,16 +32,29 @@ export default function ContentManager() {
 
   const [formData, setFormData] = useState<Record<string, any>>({});
 
-  // Atualizar formData quando os dados da seção carregarem
+  // Rastreia qual seção já foi carregada no formulário.
+  // Evita que os refetches em segundo plano do React Query
+  // (refetchInterval / refetchOnWindowFocus) sobrescrevam edições
+  // não salvas, o que deixava os campos "travados" no valor do banco.
+  const loadedSectionRef = useRef<string | null>(null);
+
+  // Ao trocar de seção, libera o recarregamento dos dados da nova seção.
   useEffect(() => {
-    if (sectionData) {
+    loadedSectionRef.current = null;
+  }, [activeSection]);
+
+  // Popula o formData apenas na primeira vez que os dados da seção ativa
+  // chegam. Refetches posteriores não apagam o que o usuário digitou.
+  useEffect(() => {
+    if (sectionData && loadedSectionRef.current !== activeSection) {
       const data: Record<string, any> = {};
       sectionData.forEach(item => {
         data[item.key] = item.value;
       });
       setFormData(data);
+      loadedSectionRef.current = activeSection;
     }
-  }, [sectionData]);
+  }, [sectionData, activeSection]);
 
   const handleChange = (key: string, value: any) => {
     setFormData(prev => ({ ...prev, [key]: value }));
