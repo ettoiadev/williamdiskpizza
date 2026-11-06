@@ -23,9 +23,11 @@ dist-ssr
 *.sln
 *.sw?
 
-# Overrides locais de ambiente (segredos reais) - NAO versionar.
-# O .env versionado contem apenas valores PUBLICOS (URL e anon key do
-# Supabase), que o Vite precisa no momento do build do Vercel e que ja
-# ficam embutidos no bundle do site.
+# Variaveis de ambiente - NAO versionar.
+# As variaveis de build (VITE_SUPABASE_URL, VITE_SUPABASE_ANON_KEY,
+# VITE_ADMIN_EMAIL) ficam configuradas no painel do Vercel
+# (Settings > Environment Variables). Mantenha um .env local para rodar
+# o projeto na sua maquina.
+.env
 .env.local
 .env.*.local
